@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AACA,OAAO,CAAC,+IAAI;AAGZ,AAAA,IAAI,CAAA;EACA,KAAK,EAAE,KAAK;EACZ,gBAAgB,EAAE,KAAK;EACvB,WAAW,EAAE,0BAA0B;CAC1C",
+    "sources": [
+        "App.scss",
+        "_breakpoints.scss"
+    ],
+    "names": [],
+    "file": "App.css"
+}
