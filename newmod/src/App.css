@@ -1,7 +1,110 @@
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 body {
+  margin: 0;
+  padding: 0;
   color: white;
   background-color: black;
   font-family: "Chakra Petch", sans-serif;
+}
+
+.wrapper {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+@media (min-width: 960px) {
+  .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.main-wrapper {
+  outline: thin solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (min-width: 0px) {
+  .main-wrapper {
+    width: 400%;
+    height: 80%;
+  }
+}
+
+@media (min-width: 960px) {
+  .main-wrapper {
+    width: 70%;
+    height: 400%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media (min-width: 0px) {
+  .side-wrapper {
+    width: 100%;
+    height: 20%;
+  }
+}
+
+@media (min-width: 960px) {
+  .side-wrapper {
+    width: 30%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 0px) {
+  .section-wrapper {
+    min-width: 25%;
+    min-height: 100%;
+    outline: thin solid red;
+  }
+}
+
+@media (min-width: 960px) {
+  .section-wrapper {
+    min-width: 100%;
+    min-height: 25%;
+    outline: thin solid red;
+  }
+}
+
+.rounded {
+  position: relative;
+  border-radius: 20px;
+}
+
+@media (min-width: 0px) {
+  .rounded {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #181818), color-stop(85%, rgba(20, 20, 20, 0.5)), color-stop(95%, rgba(20, 20, 20, 0.2)));
+    background: linear-gradient(180deg, #181818 30%, rgba(20, 20, 20, 0.5) 85%, rgba(20, 20, 20, 0.2) 95%);
+  }
+}
+
+@media (min-width: 960px) {
+  .rounded {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(24, 24, 24, 0.75)), color-stop(85%, rgba(20, 20, 20, 0.5)), color-stop(95%, rgba(20, 20, 20, 0.2)));
+    background: linear-gradient(180deg, rgba(24, 24, 24, 0.75) 30%, rgba(20, 20, 20, 0.5) 85%, rgba(20, 20, 20, 0.2) 95%);
+  }
+}
+
+.rounded::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5vh;
+  padding: 1.5px;
+  background: linear-gradient(-45deg, #646464 5%, #505050 20%, #323232 75%);
+  -webkit-mask: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff)) content-box, -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
 /*# sourceMappingURL=App.css.map */
