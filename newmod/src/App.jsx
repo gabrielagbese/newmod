@@ -7,6 +7,11 @@ import About from './Components/About';
 import Work from './Components/Work';
 import Contact from './Components/Contact';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpotify } from '@fortawesome/free-brands-svg-icons';
+
+
+
 function App() {
 	const stageRef = useRef(null);
 	const sideScreenRef  = useRef(null);
@@ -14,37 +19,64 @@ function App() {
 	const [initialY, setInitialY] = useState(0);
 	const [isSmallViewport, setIsSmallViewport] = useState(false);
 	const [isBigViewport, setIsBigViewport] = useState(false);
+	const [computedWidth, setComputedWidth] = useState(0);
+  	const [computedHeight, setComputedHeight] = useState(0);
+	
+
+	const marqueeRef = useRef(null);
 
 	useEffect(() => {
-		const parentElements = document.getElementsByClassName('rounded');
-	
-		Array.from(parentElements).forEach(parentElement => {
-		  const parentStyles = window.getComputedStyle(parentElement);
-		  const parentBorderRadius = parseInt(parentStyles.borderRadius, 10);
-		  const childElements = parentElement.getElementsByClassName('rounded');
-	
-		  Array.from(childElements).forEach(childElement => {
-			const childBorderRadius = parentBorderRadius / 2;
-			childElement.style.borderRadius = `${childBorderRadius}px`;
-			childElement.style.margin = `${childBorderRadius}px`;
-			
-			const additionalClasses = Array.from(childElement.classList).filter(className => className !== 'rounded');
-			const additionalStyles = window.getComputedStyle(childElement, additionalClasses.join(', '));
-			const childWidth = parseFloat(additionalStyles.width);
-			const childHeight = parseFloat(additionalStyles.height);
-			const computedWidth = (childWidth - (childBorderRadius * 2));
-			const computedHeight = (childHeight - (childBorderRadius * 2));
+	  const marqueeElement = marqueeRef.current;
+	  const scrollDuration = 10000; // 10 seconds
+  
+	  const scrollStep = () => {
+		if (marqueeElement.scrollLeft >= marqueeElement.scrollWidth) {
+		  marqueeElement.scrollLeft = 0;
+		} else {
+		  marqueeElement.scrollLeft += 1;
+		  requestAnimationFrame(scrollStep);
+		}
+	  };
+  
+	  const scrollInterval = setInterval(scrollStep, 10);
+  
+	  // Clean up interval on component unmount
+	  return () => {
+		clearInterval(scrollInterval);
+	  };
+	}, []);
 
-			childElement.offsetHeight;
-
-
-			setTimeout(() => {
-				childElement.style.width = `${computedWidth - 1}px`;
-				childElement.style.height = `${computedHeight - 1}px`;
-			}, 0);
+	useEffect(() => {
+		const calculateDimensions = () => {
+		  const parentElements = document.getElementsByClassName('rounded');
+		  Array.from(parentElements).forEach(parentElement => {
+			const parentStyles = window.getComputedStyle(parentElement);
+			const parentBorderRadius = parseFloat(parentStyles.borderRadius);
+			const childElements = parentElement.getElementsByClassName('rounded');
+	  
+			Array.from(childElements).forEach(childElement => {
+			  const childBorderRadius = parentBorderRadius / 2;
+			  const parentWidth = parseFloat(parentStyles.width);
+			  const parentHeight = parseFloat(parentStyles.height);
+	  
+			  const existingStyles = window.getComputedStyle(childElement);
+			  const childWidth = parseFloat(existingStyles.width) - 1 * childBorderRadius;
+			  const childHeight = parseFloat(existingStyles.height) - 1 * childBorderRadius;
+	  
+			  const childMargin = `${(childBorderRadius / parentWidth) * 100}%`;
+	  
+			  childElement.style.borderRadius = `${childBorderRadius}px`;
+			  childElement.style.margin = childMargin;
+			  childElement.style.width = `calc((${(childWidth / parentWidth) * 100}%))`;
+			  childElement.style.height = `${(childHeight / parentHeight) * 100}%`;
+			});
 		  });
-		});
+		};
+	  
+		calculateDimensions();
 	  }, []);
+	  
+	  
 
 	useEffect(() => {
 		const handleViewportChange = () => {
@@ -162,14 +194,27 @@ function App() {
 				<div className="side-wrapper">
 					<div className="side-screen" ref={sideScreenRef}>
 						<div className="screen-children rounded">
+							<div className='gk rounded '></div>
 							<div className='gk rounded'></div>
+							<div className='gk rounded spotify-wrapper'>
+								<div className='spotify-icon'><FontAwesomeIcon icon={faSpotify} /></div>
+								<div className='rounded spotify'>
+									<div className='track-name'>
+										<div className='marquee' ref={marqueeRef}>Coffee don't read signs</div>
+										<div className='marquee' ref={marqueeRef}>Coffee don't read signs</div>
+									</div>
+									<p className='artist-name'>Odeal</p>
+								</div>
+							</div>
 						</div>
             			<div className="screen-children2 rounded"></div>
 					</div>
-					<button onClick={stageHero}>Hero</button>
-					<button onClick={stageAbout}>About</button>
-					<button onClick={stageWork}>Work</button>
-					<button onClick={stageContact}>Contact</button>
+					<nav className='nav-wrapper'>
+						<button onClick={stageHero}>Hero</button>
+						<button onClick={stageAbout}>About</button>
+						<button onClick={stageWork}>Work</button>
+						<button onClick={stageContact}>Contact</button>
+					</nav>
 				</div>
 			</div>
 		</>

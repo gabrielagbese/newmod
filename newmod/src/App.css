@@ -86,9 +86,24 @@ body {
   }
 }
 
+@media (min-width: 960px) {
+  .nav-wrapper {
+    height: 55vh;
+    width: 100%;
+    border: thin solid green;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .gk {
   width: 100%;
-  height: 100%;
+  height: 35%;
 }
 
 .rounded {
@@ -143,5 +158,91 @@ body {
   height: 95%;
   margin-block: 2%;
   margin-inline: 2.5%;
+}
+
+.spotify {
+  width: 80%;
+  height: 81.5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+  -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.65);
+          box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.65);
+}
+
+.spotify-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.track-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 40%;
+  font-size: 1.5rem;
+  margin-top: 0.30rem;
+}
+
+.artist-name {
+  font-size: 1.25rem;
+  height: 40%;
+  margin-left: 0.25rem;
+}
+
+.spotify-icon {
+  width: 20%;
+  height: 100%;
+  font-size: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0.3;
+  z-index: 3;
+}
+
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-animation: marquee 10s linear infinite;
+          animation: marquee 10s linear infinite;
+  min-width: 100%;
+  height: 100%;
+}
+
+@-webkit-keyframes marquee {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
 }
 /*# sourceMappingURL=App.css.map */
