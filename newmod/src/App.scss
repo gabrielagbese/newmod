@@ -75,7 +75,8 @@ body {
     position: relative;
     border-radius: 20px;
     //border-radius: calc(inh); 
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
     @include xs {
         background: linear-gradient(180deg, rgb(24, 24, 24) 30%, rgba(20, 20, 20, 0.5)85%, rgba(20, 20, 20, 0.2) 95%);
     };
@@ -83,19 +84,6 @@ body {
         background: linear-gradient(180deg, rgba(24, 24, 24, 0.75) 30%, rgba(20, 20, 20, 0.5)85%, rgba(20, 20, 20, 0.2) 95%);
     };
 }
-
-// .rounded::before {
-//     content: "";
-//     position: absolute;
-//     inset: 0;
-//     border-radius: var(--pseudo-border-radius);
-//     padding: 1.5px;
-//     background: linear-gradient(-45deg, rgb(100, 100, 100) 5%, rgb(80, 80, 80)20%, rgb(50, 50, 50) 75%);
-//     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-//     -webkit-mask-composite: xor;
-//     mask-composite: exclude;
-//   }
-
 
 .side-screen{
     @include xs{

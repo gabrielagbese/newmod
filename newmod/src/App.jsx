@@ -37,9 +37,11 @@ function App() {
 
 			childElement.offsetHeight;
 
-			childElement.style.width = `${computedWidth - 1}px`;
-			childElement.style.height = `${computedHeight - 1}px`;
-			
+
+			setTimeout(() => {
+				childElement.style.width = `${computedWidth - 1}px`;
+				childElement.style.height = `${computedHeight - 1}px`;
+			}, 0);
 		  });
 		});
 	  }, []);
