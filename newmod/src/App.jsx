@@ -16,6 +16,37 @@ function App() {
 	const [isBigViewport, setIsBigViewport] = useState(false);
 
 	useEffect(() => {
+		const parentElements = document.getElementsByClassName('rounded');
+	
+		Array.from(parentElements).forEach(parentElement => {
+		  const parentStyles = window.getComputedStyle(parentElement);
+		  const parentBorderRadius = parseInt(parentStyles.borderRadius, 10);
+		  const childElements = parentElement.getElementsByClassName('rounded');
+	
+		  Array.from(childElements).forEach(childElement => {
+			const childBorderRadius = parentBorderRadius / 2;
+			childElement.style.borderRadius = `${childBorderRadius}px`;
+			childElement.style.margin = `${childBorderRadius}px`;
+			
+			const additionalClasses = Array.from(childElement.classList).filter(className => className !== 'rounded');
+			const additionalStyles = window.getComputedStyle(childElement, additionalClasses.join(', '));
+			const childWidth = parseFloat(additionalStyles.width);
+			const childHeight = parseFloat(additionalStyles.height);
+			const computedWidth = (childWidth - (childBorderRadius * 2));
+			const computedHeight = (childHeight - (childBorderRadius * 2));
+
+			childElement.offsetHeight;
+
+
+			setTimeout(() => {
+				childElement.style.width = `${computedWidth - 1}px`;
+				childElement.style.height = `${computedHeight - 1}px`;
+			}, 0);
+		  });
+		});
+	  }, []);
+
+	useEffect(() => {
 		const handleViewportChange = () => {
 			const currentWidth = window.innerWidth;
 			const isViewportAbove960px = currentWidth > 960;
@@ -63,7 +94,7 @@ function App() {
 	let mm = gsap.matchMedia();
 
 	const animateScroll = (targetScrollLeft) => {
-		gsap.to(sideScreenRef.current, { duration: 1.5, scrollLeft: targetScrollLeft, ease: 'power3.easeInOut' });
+		gsap.to(sideScreenRef.current, { duration: 1.75, scrollLeft: targetScrollLeft, ease: 'power3.easeInOut' });
 	  };
 
 	const stageHero = () => {
@@ -130,7 +161,9 @@ function App() {
 				</div>
 				<div className="side-wrapper">
 					<div className="side-screen" ref={sideScreenRef}>
-						<div className="screen-children rounded"></div>
+						<div className="screen-children rounded">
+							<div className='gk rounded'></div>
+						</div>
             			<div className="screen-children2 rounded"></div>
 					</div>
 					<button onClick={stageHero}>Hero</button>
