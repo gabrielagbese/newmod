@@ -63,7 +63,7 @@ function App() {
 	let mm = gsap.matchMedia();
 
 	const animateScroll = (targetScrollLeft) => {
-		gsap.to(sideScreenRef.current, { duration: 1, scrollLeft: targetScrollLeft, ease: 'power3.easeInOut' });
+		gsap.to(sideScreenRef.current, { duration: 1.5, scrollLeft: targetScrollLeft, ease: 'power3.easeInOut' });
 	  };
 
 	const stageHero = () => {
@@ -130,8 +130,8 @@ function App() {
 				</div>
 				<div className="side-wrapper">
 					<div className="side-screen" ref={sideScreenRef}>
-						<div className="screen-children"></div>
-            			<div className="screen-children2"></div>
+						<div className="screen-children rounded"></div>
+            			<div className="screen-children2 rounded"></div>
 					</div>
 					<button onClick={stageHero}>Hero</button>
 					<button onClick={stageAbout}>About</button>
