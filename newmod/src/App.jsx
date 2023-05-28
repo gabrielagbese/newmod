@@ -8,6 +8,7 @@ import Work from './Components/Work';
 import Contact from './Components/Contact';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faLocationDot} from '@fortawesome/free-solid-svg-icons';
 import { faSpotify } from '@fortawesome/free-brands-svg-icons';
 
 
@@ -24,6 +25,26 @@ function App() {
 	
 
 	const marqueeRef = useRef(null);
+
+	const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  const localTimeOptions = {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Budapest',
+  };
+
+  const localTimeString = time.toLocaleTimeString([], localTimeOptions).replace(/ AM| PM/g, '');
 
 	useEffect(() => {
 	  const marqueeElement = marqueeRef.current;
@@ -197,7 +218,22 @@ function App() {
 						<div className="screen-children rounded">
 							{/* <p className='status-text'>Status</p> */}
 							<div className='gk rounded '></div>
-							<div className='gk rounded'></div>
+							<div className='time-location '>
+								<div className='location rounded'>
+									<div className='location-icon'><FontAwesomeIcon icon={faLocationDot} /></div>
+									<span className='location-text'>
+										<p className='location-text-top'>Debrecen, HU</p>
+										<div className='location-text-line'>&nbsp;</div>
+										<p className='location-text-bottom'> ( Remote ) </p>
+									</span>
+								</div>
+								<div className='time rounded'>
+									<div className='clock'>
+									<span>{localTimeString.split(':')[0]}</span>
+       					  		    <span className="blink">:</span>
+       								 <span>{localTimeString.split(':')[1]}</span></div>
+								</div>
+							</div>
 							<div className='gk rounded spotify-wrapper'>
 								<div className='spotify-icon'><FontAwesomeIcon icon={faSpotify} /></div>
 								<div className='rounded spotify'>
