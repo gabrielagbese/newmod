@@ -76,6 +76,12 @@ body {
     };
 }
 
+.status-text{
+    margin: 0;
+    padding: 0;
+    margin-left: 3%;
+}
+
 //round styles
 
 .gk{
@@ -128,8 +134,8 @@ body {
 }
 
 .spotify{
-    width: 80%;
-    height: 81.5%;
+    width: 80% !important;
+    height: 88% !important;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -144,7 +150,7 @@ body {
     display: flex;
     width: 100%;
     height: 40%;
-    font-size: 1.5rem;
+    font-size: 150%;
     margin-top: 0.30rem;
 }
 

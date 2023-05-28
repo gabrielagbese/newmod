@@ -59,7 +59,8 @@ function App() {
 			  const parentWidth = parseFloat(parentStyles.width);
 			  const parentHeight = parseFloat(parentStyles.height);
 	  
-			  const existingStyles = window.getComputedStyle(childElement);
+			  const additionalClasses = Array.from(childElement.classList).filter(className => className !== 'rounded');
+			  const existingStyles = window.getComputedStyle(childElement, additionalClasses.join(', '));
 			  const childWidth = parseFloat(existingStyles.width) - 1 * childBorderRadius;
 			  const childHeight = parseFloat(existingStyles.height) - 1 * childBorderRadius;
 	  
@@ -68,7 +69,7 @@ function App() {
 			  childElement.style.borderRadius = `${childBorderRadius}px`;
 			  childElement.style.margin = childMargin;
 			  childElement.style.width = `calc((${(childWidth / parentWidth) * 100}%))`;
-			  childElement.style.height = `${(childHeight / parentHeight) * 100}%`;
+			  childElement.style.height = `calc((${(childHeight / parentHeight) * 100}%))`;
 			});
 		  });
 		};
@@ -194,6 +195,7 @@ function App() {
 				<div className="side-wrapper">
 					<div className="side-screen" ref={sideScreenRef}>
 						<div className="screen-children rounded">
+							{/* <p className='status-text'>Status</p> */}
 							<div className='gk rounded '></div>
 							<div className='gk rounded'></div>
 							<div className='gk rounded spotify-wrapper'>
