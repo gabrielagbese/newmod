@@ -8,97 +8,121 @@ import Work from './Components/Work';
 import Contact from './Components/Contact';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faLocationDot} from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faSpotify } from '@fortawesome/free-brands-svg-icons';
+
+import Typewriter from 'typewriter-effect';
+import SpotifyWebApi from 'spotify-web-api-js';
+import Face from './Components/Face';
 
 
 
 function App() {
 	const stageRef = useRef(null);
-	const sideScreenRef  = useRef(null);
+	const sideScreenRef = useRef(null);
 	const [initialX, setInitialX] = useState(0);
 	const [initialY, setInitialY] = useState(0);
 	const [isSmallViewport, setIsSmallViewport] = useState(false);
 	const [isBigViewport, setIsBigViewport] = useState(false);
 	const [computedWidth, setComputedWidth] = useState(0);
-  	const [computedHeight, setComputedHeight] = useState(0);
-	
+	const [computedHeight, setComputedHeight] = useState(0);
+
+	const CLIENT_ID = 'ed27c4fadd0e474f9534bf0210057ee1';
+	const REDIRECT_URI = 'http://localhost:5173/';
+
+	const [currentTrack, setCurrentTrack] = useState(null);
 
 	const marqueeRef = useRef(null);
 
 	const [time, setTime] = useState(new Date());
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setTime(new Date());
+		}, 1000);
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  const localTimeOptions = {
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: 'Europe/Budapest',
-  };
-
-  const localTimeString = time.toLocaleTimeString([], localTimeOptions).replace(/ AM| PM/g, '');
+		return () => {
+			clearInterval(timer);
+		};
+	}, []);
 
 	useEffect(() => {
-	  const marqueeElement = marqueeRef.current;
-	  const scrollDuration = 10000; // 10 seconds
-  
-	  const scrollStep = () => {
-		if (marqueeElement.scrollLeft >= marqueeElement.scrollWidth) {
-		  marqueeElement.scrollLeft = 0;
-		} else {
-		  marqueeElement.scrollLeft += 1;
-		  requestAnimationFrame(scrollStep);
-		}
-	  };
-  
-	  const scrollInterval = setInterval(scrollStep, 10);
-  
-	  // Clean up interval on component unmount
-	  return () => {
-		clearInterval(scrollInterval);
-	  };
+		const handleViewportChange = () => {
+		  window.location.reload(); // Trigger page refresh
+		};
+	
+		window.addEventListener('resize', handleViewportChange);
+	
+		return () => {
+		  window.removeEventListener('resize', handleViewportChange);
+		};
+	  }, []);
+
+	const localTimeOptions = {
+		hour: '2-digit',
+		minute: '2-digit',
+		hour12: false,
+		hourCycle: 'h23', 
+		timeZone: 'Europe/Budapest',
+	};
+
+	const localTimeString = time.toLocaleTimeString([], localTimeOptions).replace(/ AM| PM/g, '').replace(/^24:/, '00:');
+
+	
+
+	useEffect(() => {
+		const marqueeElement = marqueeRef.current;
+		const scrollDuration = 10000; // 10 seconds
+
+		const scrollStep = () => {
+			if (marqueeElement.scrollLeft >= marqueeElement.scrollWidth) {
+				marqueeElement.scrollLeft = 0;
+			} else {
+				marqueeElement.scrollLeft += 1;
+				requestAnimationFrame(scrollStep);
+			}
+		};
+
+		const scrollInterval = setInterval(scrollStep, 10);
+
+		// Clean up interval on component unmount
+		return () => {
+			clearInterval(scrollInterval);
+		};
 	}, []);
 
 	useEffect(() => {
 		const calculateDimensions = () => {
-		  const parentElements = document.getElementsByClassName('rounded');
-		  Array.from(parentElements).forEach(parentElement => {
-			const parentStyles = window.getComputedStyle(parentElement);
-			const parentBorderRadius = parseFloat(parentStyles.borderRadius);
-			const childElements = parentElement.getElementsByClassName('rounded');
-	  
-			Array.from(childElements).forEach(childElement => {
-			  const childBorderRadius = parentBorderRadius / 2;
-			  const parentWidth = parseFloat(parentStyles.width);
-			  const parentHeight = parseFloat(parentStyles.height);
-	  
-			  const additionalClasses = Array.from(childElement.classList).filter(className => className !== 'rounded');
-			  const existingStyles = window.getComputedStyle(childElement, additionalClasses.join(', '));
-			  const childWidth = parseFloat(existingStyles.width) - 1 * childBorderRadius;
-			  const childHeight = parseFloat(existingStyles.height) - 1 * childBorderRadius;
-	  
-			  const childMargin = `${(childBorderRadius / parentWidth) * 100}%`;
-	  
-			  childElement.style.borderRadius = `${childBorderRadius}px`;
-			  childElement.style.margin = childMargin;
-			  childElement.style.width = `calc((${(childWidth / parentWidth) * 100}%))`;
-			  childElement.style.height = `calc((${(childHeight / parentHeight) * 100}%))`;
+			const parentElements = document.getElementsByClassName('rounded');
+			Array.from(parentElements).forEach(parentElement => {
+				const parentStyles = window.getComputedStyle(parentElement);
+				const parentBorderRadius = parseFloat(parentStyles.borderRadius);
+				const childElements = parentElement.getElementsByClassName('rounded');
+
+				Array.from(childElements).forEach(childElement => {
+					const childBorderRadius = parentBorderRadius / 2;
+					const parentWidth = parseFloat(parentStyles.width);
+					const parentHeight = parseFloat(parentStyles.height);
+
+					const additionalClasses = Array.from(childElement.classList).filter(className => className !== 'rounded');
+					const existingStyles = window.getComputedStyle(childElement, additionalClasses.join(', '));
+					const childWidth = parseFloat(existingStyles.width) - 1 * childBorderRadius;
+					const childHeight = parseFloat(existingStyles.height) - 1 * childBorderRadius;
+
+					const childMargin = `${(childBorderRadius / parentWidth) * 100}%`;
+
+					childElement.style.borderRadius = `${childBorderRadius}px`;
+					childElement.style.margin = childMargin;
+					childElement.style.width = `calc((${(childWidth / parentWidth) * 100}%))`;
+					childElement.style.height = `calc((${(childHeight / parentHeight) * 100}%))`;
+				});
 			});
-		  });
 		};
-	  
+
 		calculateDimensions();
-	  }, []);
-	  
-	  
+	}, []);
+
+
 
 	useEffect(() => {
 		const handleViewportChange = () => {
@@ -148,8 +172,8 @@ function App() {
 	let mm = gsap.matchMedia();
 
 	const animateScroll = (targetScrollLeft) => {
-		gsap.to(sideScreenRef.current, { duration: 1.75, scrollLeft: targetScrollLeft, ease: 'power3.easeInOut' });
-	  };
+		gsap.to(sideScreenRef.current, { duration: 3.12, scrollLeft: targetScrollLeft, ease: 'power3.easeInOut' });
+	};
 
 	const stageHero = () => {
 		mm.add('(min-width: 960px)', () => {
@@ -213,11 +237,32 @@ function App() {
 					<Work />
 					<Contact />
 				</div>
+				<div className='wrapper-border'></div>
 				<div className="side-wrapper">
 					<div className="side-screen" ref={sideScreenRef}>
 						<div className="screen-children rounded">
 							{/* <p className='status-text'>Status</p> */}
-							<div className='gk rounded '></div>
+							<div className='gk rounded opportunity'>
+								<div className='opportunity-icon'>
+									<div className="circle-outer">
+										<div className="circle-inner"></div>
+									</div>
+								</div>
+								<div className='opportunity-text'>
+									<div className='opportunity-text-top'>Available for:</div>
+									<div className='opportunity-text-line'>&nbsp;</div>
+									<div className='opportunity-text-bottom'>
+										<p><Typewriter
+											options={{
+												strings: ['Freelance', 'Fulltime', 'Part-Time', 'Internship'],
+												autoStart: true,
+												loop: true,
+											}}
+										/></p>
+										<p>&nbsp;&nbsp;Opportunities</p>
+									</div>
+								</div>
+							</div>
 							<div className='time-location '>
 								<div className='location rounded'>
 									<div className='location-icon'><FontAwesomeIcon icon={faLocationDot} /></div>
@@ -229,9 +274,9 @@ function App() {
 								</div>
 								<div className='time rounded'>
 									<div className='clock'>
-									<span>{localTimeString.split(':')[0]}</span>
-       					  		    <span className="blink">:</span>
-       								 <span>{localTimeString.split(':')[1]}</span></div>
+										<span>{localTimeString.split(':')[0]}</span>
+										<span className="blink">:</span>
+										<span>{localTimeString.split(':')[1]}</span></div>
 								</div>
 							</div>
 							<div className='gk rounded spotify-wrapper'>
@@ -245,13 +290,16 @@ function App() {
 								</div>
 							</div>
 						</div>
-            			<div className="screen-children2 rounded"></div>
+						<div className="screen-children2 rounded">
+							<Face />
+						</div>
 					</div>
-					<nav className='nav-wrapper'>
-						<button onClick={stageHero}>Hero</button>
-						<button onClick={stageAbout}>About</button>
-						<button onClick={stageWork}>Work</button>
-						<button onClick={stageContact}>Contact</button>
+					<div className='nav-border'></div>
+					<nav className='nav-wrapper rounded'>
+						<button onClick={stageHero} className='nav-item rounded'>Home</button>
+						<button onClick={stageAbout} className='nav-item rounded'>About</button>
+						<button onClick={stageWork} className='nav-item rounded'>Work</button>
+						<button onClick={stageContact} className='nav-item rounded'>Contact</button>
 					</nav>
 				</div>
 			</div>

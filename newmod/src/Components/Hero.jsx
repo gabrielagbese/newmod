@@ -2,7 +2,9 @@ import React from 'react'
 
 function Hero() {
   return (
-    <div className='section-wrapper'>Hero</div>
+    <div className='section-wrapper'>
+      <div className='section-inner-wrapper rounded'>hero</div>
+    </div>
   )
 }
 
