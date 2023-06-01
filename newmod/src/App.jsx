@@ -106,8 +106,8 @@ function App() {
 
 					const additionalClasses = Array.from(childElement.classList).filter(className => className !== 'rounded');
 					const existingStyles = window.getComputedStyle(childElement, additionalClasses.join(', '));
-					const childWidth = parseFloat(existingStyles.width) - 1 * childBorderRadius;
-					const childHeight = parseFloat(existingStyles.height) - 1 * childBorderRadius;
+					const childWidth = parseFloat(existingStyles.width) - 2 * childBorderRadius;
+					const childHeight = parseFloat(existingStyles.height) - 2 * childBorderRadius;
 
 					const childMargin = `${(childBorderRadius / parentWidth) * 100}%`;
 
