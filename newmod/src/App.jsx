@@ -246,7 +246,7 @@ function App() {
 									</div>
 								</div>
 								<div className='opportunity-text'>
-									<div className='opportunity-text-top'>Available for:</div>
+									<div className='opportunity-text-top'>Aailable for:</div>
 									<div className='opportunity-text-line'>&nbsp;</div>
 									<div className='opportunity-text-bottom'>
 										<p><Typewriter
