@@ -62,7 +62,7 @@ body {
         justify-content: space-around;
     };
     @include lg{
-        margin-top: -0.25%;
+       // margin-top: -0.25%;
         width: 30%;
         height: 100%;
         flex-direction: column;
@@ -88,19 +88,19 @@ body {
     };
 }
 
-.nav-border{
-    @include xs{
-        display: none;
-    };
-    @include lg{
-        display: block;
-        width: 100%;
-        height: 1px;
-        background: white;
-        margin-bottom: 1.75%;
-        background: linear-gradient(to right, black 2.5%, #222 2.5%, #222 97.25%, black 97.25%); 
-    };
-}
+// .nav-border{
+//     @include xs{
+//         display: none;
+//     };
+//     @include lg{
+//         display: block;
+//         width: 100%;
+//         height: 1px;
+//         background: white;
+//         margin-bottom: 1.75%;
+//         background: linear-gradient(to right, black 2.5%, #222 2.5%, #222 97.25%, black 97.25%); 
+//     };
+// }
 
 .nav-wrapper{
     display: flex;
