@@ -93,81 +93,78 @@ function App() {
 
 	useEffect(() => {
 		const calculateDimensions = () => {
-			const parentElements = document.getElementsByClassName('rounded');
-			Array.from(parentElements).forEach(parentElement => {
-				const parentStyles = window.getComputedStyle(parentElement);
-				const parentBorderRadius = parseFloat(parentStyles.borderRadius);
-				const childElements = parentElement.getElementsByClassName('rounded');
-
-				Array.from(childElements).forEach(childElement => {
-					const childBorderRadius = parentBorderRadius / 2;
-					const parentWidth = parseFloat(parentStyles.width);
-					const parentHeight = parseFloat(parentStyles.height);
-
-					const additionalClasses = Array.from(childElement.classList).filter(className => className !== 'rounded');
-					const existingStyles = window.getComputedStyle(childElement, additionalClasses.join(', '));
-					const childWidth = parseFloat(existingStyles.width) - 1 * childBorderRadius;
-					const childHeight = parseFloat(existingStyles.height) - 1 * childBorderRadius;
-
-					const childMargin = `${(childBorderRadius / parentWidth) * 100}%`;
-
-					childElement.style.borderRadius = `${childBorderRadius}px`;
-					childElement.style.margin = childMargin;
-					childElement.style.width = `calc((${(childWidth / parentWidth) * 100}%))`;
-					childElement.style.height = `calc((${(childHeight / parentHeight) * 100}%))`;
-				});
+		  const parentElements = document.getElementsByClassName('rounded');
+		  Array.from(parentElements).forEach(parentElement => {
+			const parentStyles = window.getComputedStyle(parentElement);
+			const parentBorderRadius = parseInt(parentStyles.borderRadius, 10);
+			const childElements = parentElement.getElementsByClassName('rounded');
+	  
+			Array.from(childElements).forEach(childElement => {
+			  const childBorderRadius = parentBorderRadius / 2;
+			  const childMargin = `${childBorderRadius}px`;
+			  const parentWidth = parseInt(parentStyles.width, 10);
+			  const parentHeight = parseInt(parentStyles.height, 10);
+	  
+			  const existingStyles = window.getComputedStyle(childElement);
+			  const childWidth = parseFloat(existingStyles.width) - 1 * childBorderRadius;
+			  const childHeight = parseFloat(existingStyles.height) - 1 * childBorderRadius;
+	  
+			  childElement.style.borderRadius = `${childBorderRadius}px`;
+			  childElement.style.margin = childMargin;
+			  childElement.style.width = `${childWidth}px`;
+			  childElement.style.height = `${childHeight}px`;
 			});
+		  });
 		};
-
 		calculateDimensions();
-	}, []);
+	  }, []);
 
 
 
-	useEffect(() => {
-		const handleViewportChange = () => {
-			const currentWidth = window.innerWidth;
-			const isViewportAbove960px = currentWidth > 960;
-			const isViewportBelow960px = currentWidth <= 960;
+	// useEffect(() => {
+	// 	const handleViewportChange = () => {
+	// 		const currentWidth = window.innerWidth;
+	// 		const isViewportAbove960px = currentWidth > 960;
+	// 		const isViewportBelow960px = currentWidth <= 960;
 
-			if (isViewportAbove960px && !isBigViewport) {
-				gsap.matchMediaRefresh();
-				setIsBigViewport(true);
-				setIsSmallViewport(false);
-				gsap.set(stageRef.current, { clearProps: 'all' });
-				setInitialY(0);
-				setInitialX(0);
-			} else if (!isViewportAbove960px && !isSmallViewport) {
-				gsap.matchMediaRefresh();
-				setIsSmallViewport(true);
-				setIsBigViewport(false);
-				gsap.set(stageRef.current, { clearProps: 'all' });
-				setInitialX(0);
-				setInitialY(0);
-			}
+	// 		if (isViewportAbove960px && !isBigViewport) {
+	// 			gsap.matchMediaRefresh();
+	// 			setIsBigViewport(true);
+	// 			setIsSmallViewport(false);
+	// 			gsap.set(stageRef.current, { clearProps: 'all' });
+	// 			setInitialY(0);
+	// 			setInitialX(0);
+	// 		} else if (!isViewportAbove960px && !isSmallViewport) {
+	// 			gsap.matchMediaRefresh();
+	// 			setIsSmallViewport(true);
+	// 			setIsBigViewport(false);
+	// 			gsap.set(stageRef.current, { clearProps: 'all' });
+	// 			setInitialX(0);
+	// 			setInitialY(0);
+	// 		}
 
-			if (isViewportBelow960px && !isSmallViewport) {
-				gsap.matchMediaRefresh();
-				setIsSmallViewport(true);
-				setIsBigViewport(false);
-				gsap.set(stageRef.current, { clearProps: 'all' });
-				setInitialX(0);
-				setInitialY(0);
-			} else if (!isViewportBelow960px && !isBigViewport) {
-				gsap.matchMediaRefresh();
-				setIsBigViewport(true);
-				setIsSmallViewport(false);
-				gsap.set(stageRef.current, { clearProps: 'all' });
-				setInitialY(0);
-				setInitialX(0);
-			}
-		};
+	// 		if (isViewportBelow960px && !isSmallViewport) {
+	// 			gsap.matchMediaRefresh();
+	// 			setIsSmallViewport(true);
+	// 			setIsBigViewport(false);
+	// 			gsap.set(stageRef.current, { clearProps: 'all' });
+	// 			setInitialX(0);
+	// 			setInitialY(0);
+	// 		} else if (!isViewportBelow960px && !isBigViewport) {
+	// 			gsap.matchMediaRefresh();
+	// 			setIsBigViewport(true);
+	// 			setIsSmallViewport(false);
+	// 			gsap.set(stageRef.current, { clearProps: 'all' });
+	// 			setInitialY(0);
+	// 			setInitialX(0);
+	// 		}
+	// 	};
 
-		window.addEventListener('resize', handleViewportChange);
-		return () => {
-			window.removeEventListener('resize', handleViewportChange);
-		};
-	}, [isSmallViewport, isBigViewport]);
+	// 	window.addEventListener('resize', handleViewportChange);
+	// 	return () => {
+	// 		window.removeEventListener('resize', handleViewportChange);
+	// 	};
+	// }, [isSmallViewport, isBigViewport]);
 
 	let mm = gsap.matchMedia();
 
