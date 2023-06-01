@@ -37,8 +37,9 @@ body {
     display: block;
     width: 0.5px;
     height: 100%;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(1.5%, black), color-stop(1.5%, #222), color-stop(99%, #222), color-stop(99%, black));
-    background: linear-gradient(to bottom, black 1.5%, #222 1.5%, #222 99%, black 99%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(3%, black), color-stop(3%, #222), color-stop(98.5%, #222), color-stop(98.5%, black));
+    background: linear-gradient(to bottom, black 3%, #222 3%, #222 98.5%, black 98.5%);
+    z-index: 3;
   }
 }
 
@@ -95,8 +96,9 @@ body {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
@@ -147,7 +149,7 @@ body {
 
 @media (min-width: 960px) {
   .nav-wrapper {
-    height: 51vh;
+    height: 49vh;
     width: 95%;
     border: thin solid green;
     -webkit-box-orient: vertical;
@@ -265,8 +267,8 @@ body {
 
 @media (min-width: 960px) {
   .rounded {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(24, 24, 24, 0.75)), color-stop(85%, rgba(20, 20, 20, 0.5)), color-stop(95%, rgba(20, 20, 20, 0.2)));
-    background: linear-gradient(180deg, rgba(24, 24, 24, 0.75) 30%, rgba(20, 20, 20, 0.5) 85%, rgba(20, 20, 20, 0.2) 95%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(30, 30, 30, 0.75)), color-stop(85%, rgba(25, 25, 25, 0.5)), color-stop(95%, rgba(25, 25, 25, 0.2)));
+    background: linear-gradient(180deg, rgba(30, 30, 30, 0.75) 30%, rgba(25, 25, 25, 0.5) 85%, rgba(25, 25, 25, 0.2) 95%);
   }
 }
 
@@ -283,7 +285,7 @@ body {
     display: flex;
     overflow: hidden;
     width: 100%;
-    height: 45vh;
+    height: 48vh;
   }
 }
 
@@ -730,8 +732,29 @@ body {
 }
 
 .section-inner-wrapper {
-  margin-top: 0.2%;
+  margin-top: 0.9%;
   width: 98%;
-  height: 97.6%;
+  height: 96%;
+}
+
+.hero-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-top {
+  width: 100%;
+  height: 48%;
+  border-bottom: thin solid white;
+}
+
+.hero-bottom {
+  width: 100%;
+  height: 52%;
+}
+
+#board {
+  background-color: #aaaaaa;
+  width: 100%;
 }
 /*# sourceMappingURL=App.css.map */

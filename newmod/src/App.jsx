@@ -93,31 +93,34 @@ function App() {
 
 	useEffect(() => {
 		const calculateDimensions = () => {
-		  const parentElements = document.getElementsByClassName('rounded');
-		  Array.from(parentElements).forEach(parentElement => {
-			const parentStyles = window.getComputedStyle(parentElement);
-			const parentBorderRadius = parseInt(parentStyles.borderRadius, 10);
-			const childElements = parentElement.getElementsByClassName('rounded');
-	  
-			Array.from(childElements).forEach(childElement => {
-			  const childBorderRadius = parentBorderRadius / 2;
-			  const childMargin = `${childBorderRadius}px`;
-			  const parentWidth = parseInt(parentStyles.width, 10);
-			  const parentHeight = parseInt(parentStyles.height, 10);
-	  
-			  const existingStyles = window.getComputedStyle(childElement);
-			  const childWidth = parseFloat(existingStyles.width) - 1 * childBorderRadius;
-			  const childHeight = parseFloat(existingStyles.height) - 1 * childBorderRadius;
-	  
-			  childElement.style.borderRadius = `${childBorderRadius}px`;
-			  childElement.style.margin = childMargin;
-			  childElement.style.width = `${childWidth}px`;
-			  childElement.style.height = `${childHeight}px`;
+			const parentElements = document.getElementsByClassName('rounded');
+			Array.from(parentElements).forEach(parentElement => {
+				const parentStyles = window.getComputedStyle(parentElement);
+				const parentBorderRadius = parseFloat(parentStyles.borderRadius);
+				const childElements = parentElement.getElementsByClassName('rounded');
+
+				Array.from(childElements).forEach(childElement => {
+					const childBorderRadius = parentBorderRadius / 2;
+					const parentWidth = parseFloat(parentStyles.width);
+					const parentHeight = parseFloat(parentStyles.height);
+
+					const additionalClasses = Array.from(childElement.classList).filter(className => className !== 'rounded');
+					const existingStyles = window.getComputedStyle(childElement, additionalClasses.join(', '));
+					const childWidth = parseFloat(existingStyles.width) - 1 * childBorderRadius;
+					const childHeight = parseFloat(existingStyles.height) - 1 * childBorderRadius;
+
+					const childMargin = `${(childBorderRadius / parentWidth) * 100}%`;
+
+					childElement.style.borderRadius = `${childBorderRadius}px`;
+					childElement.style.margin = childMargin;
+					childElement.style.width = `calc((${(childWidth / parentWidth) * 100}%))`;
+					childElement.style.height = `calc((${(childHeight / parentHeight) * 100}%))`;
+				});
 			});
-		  });
 		};
+
 		calculateDimensions();
-	  }, []);
+	}, []);
 
 
 
@@ -246,7 +249,7 @@ function App() {
 									</div>
 								</div>
 								<div className='opportunity-text'>
-									<div className='opportunity-text-top'>Aailable for:</div>
+									<div className='opportunity-text-top'>Available for:</div>
 									<div className='opportunity-text-line'>&nbsp;</div>
 									<div className='opportunity-text-bottom'>
 										<p><Typewriter
