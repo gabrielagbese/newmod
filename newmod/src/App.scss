@@ -18,11 +18,13 @@ body {
 .wrapper {
     overflow: hidden;
     width: 100vw;
-    height: 100vh;
+    
     @include xs{
+      height: 95%;
     };
     @include lg{
-     display: flex
+     display: flex;
+     height: 100%;
     };
 }
 

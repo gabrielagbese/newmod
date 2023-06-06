@@ -15,7 +15,12 @@ body {
 .wrapper {
   overflow: hidden;
   width: 100vw;
-  height: 100vh;
+}
+
+@media (min-width: 0px) {
+  .wrapper {
+    height: 95%;
+  }
 }
 
 @media (min-width: 960px) {
@@ -23,6 +28,7 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    height: 100%;
   }
 }
 
