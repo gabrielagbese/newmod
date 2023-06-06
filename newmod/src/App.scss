@@ -20,7 +20,7 @@ body {
     width: 100vw;
     
     @include xs{
-      height: 92.5vh;
+      height: 100svh;
     };
     @include lg{
      display: flex;

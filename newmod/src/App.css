@@ -19,7 +19,7 @@ body {
 
 @media (min-width: 0px) {
   .wrapper {
-    height: 92.5vh;
+    height: 100svh;
   }
 }
 
