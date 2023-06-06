@@ -52,7 +52,7 @@ body {
 @media (min-width: 0px) {
   .main-wrapper {
     width: 400%;
-    height: 80%;
+    height: 85%;
   }
 }
 
@@ -76,12 +76,13 @@ body {
 @media (min-width: 0px) {
   .side-wrapper {
     width: 100%;
-    height: 20%;
+    height: 14%;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
@@ -140,8 +141,13 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    width: 95%;
-    height: 60%;
+    width: 97%;
+    height: 85%;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
     -ms-flex-pack: distribute;
         justify-content: space-around;
   }
@@ -172,6 +178,7 @@ body {
     height: 100%;
     color: white;
     margin-right: 0 !important;
+    font-size: 1rem;
   }
 }
 
@@ -183,6 +190,7 @@ body {
     margin-bottom: 0 !important;
     font-size: 2rem;
     cursor: pointer;
+    font-size: 1.25rem;
   }
 }
 
@@ -254,21 +262,21 @@ body {
   position: relative;
   border-radius: 20px;
   border: 1.5px solid rgba(255, 255, 255, 0.15);
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(35px);
+          backdrop-filter: blur(35px);
 }
 
 @media (min-width: 0px) {
   .rounded {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #181818), color-stop(85%, rgba(20, 20, 20, 0.5)), color-stop(95%, rgba(20, 20, 20, 0.2)));
-    background: linear-gradient(180deg, #181818 30%, rgba(20, 20, 20, 0.5) 85%, rgba(20, 20, 20, 0.2) 95%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(20, 20, 20, 0.65)), color-stop(85%, rgba(20, 20, 20, 0.35)), color-stop(95%, rgba(20, 20, 20, 0.2)));
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.65) 30%, rgba(20, 20, 20, 0.35) 85%, rgba(20, 20, 20, 0.2) 95%);
   }
 }
 
 @media (min-width: 960px) {
   .rounded {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(30, 30, 30, 0.75)), color-stop(85%, rgba(25, 25, 25, 0.5)), color-stop(95%, rgba(25, 25, 25, 0.2)));
-    background: linear-gradient(180deg, rgba(30, 30, 30, 0.75) 30%, rgba(25, 25, 25, 0.5) 85%, rgba(25, 25, 25, 0.2) 95%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(20, 20, 20, 0.75)), color-stop(85%, rgba(20, 20, 20, 0.35)), color-stop(95%, rgba(22, 22, 22, 0.2)));
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.75) 30%, rgba(20, 20, 20, 0.35) 85%, rgba(22, 22, 22, 0.2) 95%);
   }
 }
 
@@ -297,6 +305,7 @@ body {
 }
 
 .screen-children2 {
+  background: radial-gradient(#cccccc22, black 80%);
   min-width: 95%;
   height: 95%;
   margin-block: 2%;
@@ -639,7 +648,6 @@ body {
   width: 100%;
   height: 99.5%;
   background: url(./assets/ooorganize2.svg);
-  background-color: black;
   background-position: center;
   background-size: contain;
   display: -webkit-box;
@@ -725,8 +733,8 @@ body {
 }
 
 .pupil {
-  aspect-ratio: 1.125/1;
-  width: 60%;
+  aspect-ratio: 1/1;
+  width: 65%;
   background-color: black;
   border-radius: 50%;
 }
@@ -742,19 +750,86 @@ body {
   height: 100%;
 }
 
+.hero-border {
+  width: 100%;
+  height: 1px;
+  background: -webkit-gradient(linear, right top, left top, color-stop(0.9rem, rgba(0, 0, 0, 0)), color-stop(0.9rem, rgba(255, 255, 255, 0.15)), color-stop(rgba(255, 255, 255, 0.15)), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(to left, rgba(0, 0, 0, 0) 0.9rem, rgba(255, 255, 255, 0.15) 0.9rem, rgba(255, 255, 255, 0.15) calc(100% - 0.9rem), rgba(0, 0, 0, 0) calc(100% - 0.9rem));
+}
+
 .hero-top {
   width: 100%;
-  height: 48%;
-  border-bottom: thin solid white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+@media (min-width: 0px) {
+  .hero-top {
+    height: 60%;
+  }
+}
+
+@media (min-width: 960px) {
+  .hero-top {
+    height: 48%;
+  }
 }
 
 .hero-bottom {
   width: 100%;
-  height: 52%;
+}
+
+@media (min-width: 0px) {
+  .hero-bottom {
+    height: 40%;
+  }
+}
+
+@media (min-width: 960px) {
+  .hero-bottom {
+    height: 52%;
+  }
 }
 
 #board {
-  background-color: #aaaaaa;
   width: 100%;
+}
+
+.metal-text {
+  background: -webkit-linear-gradient(#eee, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  font-weight: 600;
+}
+
+@media (min-width: 0px) {
+  .metal-text {
+    padding: 1rem;
+    font-size: 2.25rem;
+    text-align: start;
+  }
+}
+
+@media (min-width: 720px) {
+  .metal-text {
+    font-size: 300%;
+    text-align: start;
+  }
+}
+
+@media (min-width: 960px) {
+  .metal-text {
+    padding: 1rem;
+    font-size: 325%;
+  }
 }
 /*# sourceMappingURL=App.css.map */

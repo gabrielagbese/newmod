@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import dinoStationary from '../assets/dino-stationary.png';
 import dinoLose from '../assets/dino-lose.png';
 import cactus1 from '../assets/cactus.png';
@@ -8,9 +8,11 @@ import cactus3 from '../assets/cactus3.png';
 function Dino() {
 
     const canvasRef = useRef(null);
+    const [gameRestart, setGameRestart] = useState(false);
 
     useEffect(() => {
         //board
+        setGameRestart(true)
     let board;
     let boardWidth = 750;
     let boardHeight = 250;
@@ -35,7 +37,7 @@ function Dino() {
 
     let cactus1Width = 34;
     let cactus2Width = 69;
-    let cactus3Width = 80;
+    let cactus3Width = 102;
 
     let cactusHeight = 70;
     let cactusX = 700;
@@ -126,6 +128,7 @@ function Dino() {
         //place Cactus
     
         if(gameOver){
+            setGameRestart(true)
             return;
         }
 
@@ -169,7 +172,7 @@ function Dino() {
                 a.y < b.y + b.height &&
                 a.y + a.height > b.y;
       }
-  }, []);
+  }, [gameRestart]);
 
   
 

@@ -45,7 +45,7 @@ body {
     //overflow: scroll;
     @include xs {
         width: 400%;
-        height: 80%;
+        height: 85%;
     };
     @include lg {
         width: 70%;
@@ -58,9 +58,9 @@ body {
     display: flex;
     @include xs{
         width: 100%;
-        height: 20%;
+        height: 14%; 
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
     };
     @include lg{
        // margin-top: -0.25%;
@@ -107,8 +107,10 @@ body {
     display: flex;
     @include xs{
         flex-direction: row;
-        width: 95%;
-        height: 60%;
+        width: 97%;
+        height: 85%;
+        align-self: center;
+        justify-self: center;
         justify-content: space-around;
     };
     @include lg{
@@ -128,7 +130,7 @@ body {
         color: white;
         //margin-bottom: -5% !important;
         margin-right: 0 !important;
-        
+        font-size: 1rem
     };
     @include lg{
         width: 100%;
@@ -137,6 +139,7 @@ body {
         margin-bottom: 0 !important;
         font-size: 2rem;
         cursor: pointer;
+        font-size: 1.25rem
     };
 }
 
@@ -197,16 +200,16 @@ body {
 }
 
 .rounded {
-    position: relative;
+    position: relative; 
     border-radius: 20px;
-    //border-radius: calc(inh); 
+    //border-radius: calc(inh);   
     border: 1.5px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(35px); 
     @include xs {
-        background: linear-gradient(180deg, rgb(24, 24, 24) 30%, rgba(20, 20, 20, 0.5)85%, rgba(20, 20, 20, 0.2) 95%);
+        background: linear-gradient(180deg, rgba(20, 20, 20,0.65) 30%, rgba(20, 20, 20, 0.35)85%, rgba(20, 20, 20, 0.2) 95%);
     };
     @include lg {
-        background: linear-gradient(180deg, rgba(30, 30, 30, 0.75) 30%, rgba(25, 25, 25, 0.5)85%, rgba(25, 25, 25, 0.2) 95%);
+        background: linear-gradient(180deg, rgba(20, 20, 20,0.75) 30%, rgba(20, 20, 20, 0.35)85%, rgba(22, 22, 22, 0.2) 95%);
     };
 }
 
@@ -233,6 +236,7 @@ body {
 
 .screen-children2{
     //background-color: red;
+    background: radial-gradient(#cccccc22, black 80%);
     min-width: 95%;
     height: 95%;
     margin-block: 2%;
@@ -465,11 +469,11 @@ body {
     }
   }
 
+
   .face-wrapper{
     width: 100%;
     height: 99.5%;
     background: url(./assets/ooorganize2.svg); 
-    background-color: black;
     background-position: center;
     background-size: contain;
     display: flex;
@@ -483,7 +487,6 @@ body {
     width: 70%;
     height: 88%;
     z-index: 2;
-    
   }
 
 //   .neck {
@@ -555,8 +558,8 @@ body {
   }
 
   .pupil{
-    aspect-ratio: 1.125/1;
-    width: 60%; 
+    aspect-ratio: 1/1;
+    width: 65%; 
     background-color: black;
     border-radius: 50%;
   }
@@ -572,19 +575,63 @@ body {
     height: 100%;
   }
 
+  .hero-border{
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0) 0.9rem, rgba(255, 255, 255, 0.15) 0.9rem, rgba(255, 255, 255, 0.15) calc(100% - 0.9rem), rgba(0, 0, 0, 0) calc(100% - 0.9rem)); 
+  }
+
   .hero-top{
     width: 100%;
-    height: 48%;
-    border-bottom: thin solid white;
+    //border-bottom: thin solid rgba(255, 255, 255, 0.419);
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    @include xs{
+      height: 60%;
+    };
+    @include lg{
+      height: 48%;
+      
+      
+    };
   }
   .hero-bottom{
     width: 100%;
-    height: 52%;
+    @include xs{
+      height: 40%;
+    };
+    @include lg{
+      height: 52%;
+    };
   }
 
   #board{
-    background-color: #aaaaaa;
+    //background-color: #aaaaaa55;
+    //scale: 0.725;
     width: 100%;
+    //margin-top: -10%;
   }
+
+  .metal-text {
+    background: -webkit-linear-gradient(#eee, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    font-weight: 600;
+    @include xs{
+      padding: 1rem;
+      font-size: 2.25rem;
+      text-align: start
+    };
+    @include md{
+      font-size: 300%;
+      text-align: start
+    };
+    @include lg{
+      padding: 1rem;
+      font-size: 325%;
+    };
+}
 
 
