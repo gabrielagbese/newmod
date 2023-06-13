@@ -1346,13 +1346,13 @@ body {
 
 @media (min-width: 0px) {
   .layer0 {
-    background-image: url(./assets/h0.png);
+    background-image: url(./assets/template.png);
   }
 }
 
 @media (min-width: 960px) {
   .layer0 {
-    background-image: url(./assets/l0.png);
+    background-image: url(./assets/template-2.png);
   }
 }
 

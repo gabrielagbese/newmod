@@ -7,8 +7,8 @@ function Hero() {
 
 	const defaultOptions = {
 		reverse:        true,  // reverse the tilt direction
-		max:            3,     // max tilt rotation (degrees)
-		perspective:    200,   // Transform perspective, the lower the more extreme the tilt gets.
+		max:            1,     // max tilt rotation (degrees)
+		perspective:    300,   // Transform perspective, the lower the more extreme the tilt gets.
 		scale:          1.01,    // 2 = 200%, 1.5 = 150%, etc..
 		speed:          500,   // Speed of the enter/exit transition
 		transition:     true,   // Set a transition on enter/exit.
@@ -57,16 +57,14 @@ function Hero() {
 						{/* <div className='hero-border'></div> */}
 						<div className='hero-right'>
 							<div className='game-space'>
-								<Tilt options={defaultOptions} style={{ height: "100%", width: "100%" }}>
 										<div className='layer-wrapper'>
 											<div className='layer0'></div>
-											<div className='layer1'></div>
+											{/* <div className='layer1'></div>
 											<div className='layer2'></div>
 											<div className='layer3'></div>
-											<div className='layer4'></div>
+											<div className='layer4'></div>  */}
 										</div>
-								</Tilt>
-								{/* <div className="scanline"></div> */}
+								<div className="scanline"></div>
 							</div>
 						</div>
 					</div>

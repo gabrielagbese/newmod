@@ -978,10 +978,10 @@ body {
     transform-style: preserve-3d;
     transform: translateZ(10px);
     @include xs{
-      background-image: url(./assets/h0.png);  
+      background-image: url(./assets/template.png);  
     };
     @include lg{
-      background-image: url(./assets/l0.png);  
+      background-image: url(./assets/template-2.png);  
     };
   }
 
