@@ -15,6 +15,12 @@ function Hero() {
 		axis:           'x',   // What axis should be disabled. Can be X or Y.
 		reset:          false,    // If the tilt effect has to be reset on exit.
 		easing:         "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
+		//"mouse-event-element":  null,   // css-selector or link to HTML-element what will be listen mouse events
+		gyroscope:              true,   // Boolean to enable/disable device orientation detection,
+		gyroscopeMinAngleX:     -45,    // This is the bottom limit of the device angle on X axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the left border of the element;
+		gyroscopeMaxAngleX:     45,     // This is the top limit of the device angle on X axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the right border of the element;
+		gyroscopeMinAngleY:     -45,    // This is the bottom limit of the device angle on Y axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the top border of the element;
+		gyroscopeMaxAngleY:     45,     // This is the top limit of the device angle on Y axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the bottom border of the element;
 	}
 
 	return (
