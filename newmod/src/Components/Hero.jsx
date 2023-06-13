@@ -44,7 +44,7 @@ function Hero() {
 							</div>
 							<div className='hero-social'>
 								<div className='hero-social-icon'>Github</div>
-								<div className='hero-social-icon'>Linkedin</div>
+								<div className='hero-social-icon'>LinkedIn</div>
 								<div className='hero-social-icon'>Email</div>
 							</div>
 						</div>

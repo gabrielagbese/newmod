@@ -92,7 +92,7 @@ function App() {
 		};
 	}, []);
 
-	useEffect(() => {
+	useEffect(() => { 
 		const calculateDimensions = () => {
 			const parentElements = document.getElementsByClassName('rounded');
 			Array.from(parentElements).forEach(parentElement => {
