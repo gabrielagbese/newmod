@@ -11,9 +11,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faSpotify } from '@fortawesome/free-brands-svg-icons';
 
-import Typewriter from 'typewriter-effect';
+
 import SpotifyWebApi from 'spotify-web-api-js';
 import Face from './Components/Face';
+import Watch from './Components/Watch';
 
 
 
@@ -122,53 +123,6 @@ function App() {
 		calculateDimensions();
 	}, []);
 
-
-
-	// useEffect(() => {
-	// 	const handleViewportChange = () => {
-	// 		const currentWidth = window.innerWidth;
-	// 		const isViewportAbove960px = currentWidth > 960;
-	// 		const isViewportBelow960px = currentWidth <= 960;
-
-	// 		if (isViewportAbove960px && !isBigViewport) {
-	// 			gsap.matchMediaRefresh();
-	// 			setIsBigViewport(true);
-	// 			setIsSmallViewport(false);
-	// 			gsap.set(stageRef.current, { clearProps: 'all' });
-	// 			setInitialY(0);
-	// 			setInitialX(0);
-	// 		} else if (!isViewportAbove960px && !isSmallViewport) {
-	// 			gsap.matchMediaRefresh();
-	// 			setIsSmallViewport(true);
-	// 			setIsBigViewport(false);
-	// 			gsap.set(stageRef.current, { clearProps: 'all' });
-	// 			setInitialX(0);
-	// 			setInitialY(0);
-	// 		}
-
-	// 		if (isViewportBelow960px && !isSmallViewport) {
-	// 			gsap.matchMediaRefresh();
-	// 			setIsSmallViewport(true);
-	// 			setIsBigViewport(false);
-	// 			gsap.set(stageRef.current, { clearProps: 'all' });
-	// 			setInitialX(0);
-	// 			setInitialY(0);
-	// 		} else if (!isViewportBelow960px && !isBigViewport) {
-	// 			gsap.matchMediaRefresh();
-	// 			setIsBigViewport(true);
-	// 			setIsSmallViewport(false);
-	// 			gsap.set(stageRef.current, { clearProps: 'all' });
-	// 			setInitialY(0);
-	// 			setInitialX(0);
-	// 		}
-	// 	};
-
-	// 	window.addEventListener('resize', handleViewportChange);
-	// 	return () => {
-	// 		window.removeEventListener('resize', handleViewportChange);
-	// 	};
-	// }, [isSmallViewport, isBigViewport]);
-
 	let mm = gsap.matchMedia();
 
 	const animateScroll = (targetScrollLeft) => {
@@ -231,53 +185,33 @@ function App() {
 	return (
 		<>
 			<div className="wrapper">
+				<p className='mobile-home' onClick={stageHero} >| <span className='mobile-home-g' >G</span> |</p>
 				<div className="main-wrapper" ref={stageRef}>
 					<Hero />
 					<About />
 					<Work />
 					<Contact />
 				</div>
-				<div className='wrapper-border'></div>
+				
 				<div className="side-wrapper">
 					<div className="side-screen" ref={sideScreenRef}>
 						<div className="screen-children rounded">
-							{/* <p className='status-text'>Status</p> */}
-							<div className='gk rounded opportunity'>
-								<div className='opportunity-icon'>
-									<div className="circle-outer">
-										<div className="circle-inner"></div>
-									</div>
-								</div>
-								<div className='opportunity-text'>
-									<div className='opportunity-text-top'>Available for:</div>
-									<div className='opportunity-text-line'>&nbsp;</div>
-									<div className='opportunity-text-bottom'>
-										<p><Typewriter
-											options={{
-												strings: ['Freelance', 'Fulltime', 'Part-Time', 'Internship'],
-												autoStart: true,
-												loop: true,
-											}}
-										/></p>
-										<p>&nbsp;&nbsp;Opportunities</p>
-									</div>
-								</div>
-							</div>
-							<div className='time-location '>
+							<div className='rounded time-location'>
 								<div className='location rounded'>
-									<div className='location-icon'><FontAwesomeIcon icon={faLocationDot} /></div>
-									<span className='location-text'>
-										<p className='location-text-top'>Debrecen, HU</p>
-										<div className='location-text-line'>&nbsp;</div>
-										<p className='location-text-bottom'> ( Remote ) </p>
-									</span>
+									<div className='icon-time rounded'>
+												<div className='location-time'>
+													<div className='clock2'>
+													<span>{localTimeString.split(':')[0]}</span>
+													<span className="blink">:</span>
+													<span>{localTimeString.split(':')[1]}</span>
+												</div>
+											</div>
+									</div>
+									
+									<div className='rounded city'><FontAwesomeIcon icon={faLocationDot} /> &nbsp; Debrecen, HU</div>									
+									<div className='rounded remote'>(Remote)</div>
 								</div>
-								<div className='time rounded'>
-									<div className='clock'>
-										<span>{localTimeString.split(':')[0]}</span>
-										<span className="blink">:</span>
-										<span>{localTimeString.split(':')[1]}</span></div>
-								</div>
+								<div className='time rounded'><Watch /></div>
 							</div>
 							<div className='gk rounded spotify-wrapper'>
 								<div className='spotify-icon'><FontAwesomeIcon icon={faSpotify} /></div>
@@ -290,13 +224,13 @@ function App() {
 								</div>
 							</div>
 						</div>
-						<div className="screen-children2 rounded">
+						<div onClick={stageHero} className="screen-children2 rounded">
 							<Face />
 						</div>
 					</div>
 					<div className='nav-border'></div>
 					<nav className='nav-wrapper rounded'>
-						<button onClick={stageHero} className='nav-item rounded'>Home</button>
+						{/* <button onClick={stageHero} className='nav-item rounded'>Home</button> */}
 						<button onClick={stageAbout} className='nav-item rounded'>About</button>
 						<button onClick={stageWork} className='nav-item rounded'>Work</button>
 						<button onClick={stageContact} className='nav-item rounded'>Contact</button>
