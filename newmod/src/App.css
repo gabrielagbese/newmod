@@ -341,9 +341,13 @@ body {
   }
 }
 
+.side-screen > .rounded {
+  border: thin solid transparent;
+}
+
 .screen-children {
-  min-width: 95%;
-  height: 95%;
+  min-width: 95% !important;
+  height: 95% !important;
   margin-block: 2%;
   margin-inline: 2.5%;
 }
