@@ -208,7 +208,7 @@ function App() {
 											</div>
 									</div>
 									
-									<div className='rounded city'>Debrecen, HU</div>									
+									<div className='rounded city'>Debrecen,HU</div>									
 									<div className='rounded remote'>(Remote)</div>
 								</div>
 								<div className='time rounded'><Watch /></div>

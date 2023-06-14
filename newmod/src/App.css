@@ -203,8 +203,8 @@ body {
 
 @media (min-width: 960px) {
   .nav-wrapper {
-    height: 48.75vh;
-    margin-top: 0.5vh;
+    height: 49vh;
+    margin-top: 0.75vh;
     width: 95%;
     border: thin solid green;
     -webkit-box-orient: vertical;
