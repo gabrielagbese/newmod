@@ -161,7 +161,7 @@ body {
     };
     @include lg{
         width: 100%;
-        height: 33.3%;
+        height: 35%;
         color: rgb(255, 255, 255);
         margin-bottom: 0 !important;
         font-weight: 400;
@@ -814,7 +814,7 @@ body {
       padding-bottom: 1.5%;
     };
     @include md{
-      font-size: 6.5em;
+      font-size: 6.5vw;
     };
     @include lg{
       //margin-top: 1em;
@@ -843,7 +843,7 @@ body {
     };
     @include md{
         padding-top: 0.75em;
-        font-size: 2.25em;
+        font-size: 2.25vw; 
         padding-inline: 2rem;
         margin-block: 0rem;
         line-height: 2.25rem;

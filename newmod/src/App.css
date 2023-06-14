@@ -241,7 +241,7 @@ body {
 @media (min-width: 960px) {
   .nav-item {
     width: 100%;
-    height: 33.3%;
+    height: 35%;
     color: white;
     margin-bottom: 0 !important;
     font-weight: 400;
@@ -1109,7 +1109,7 @@ body {
 
 @media (min-width: 720px) {
   .name-text {
-    font-size: 6.5em;
+    font-size: 6.5vw;
   }
 }
 
@@ -1148,7 +1148,7 @@ body {
 @media (min-width: 720px) {
   .hero-text {
     padding-top: 0.75em;
-    font-size: 2.25em;
+    font-size: 2.25vw;
     padding-inline: 2rem;
     margin-block: 0rem;
     line-height: 2.25rem;
