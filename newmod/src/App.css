@@ -344,8 +344,6 @@ body {
 .screen-children {
   min-width: 95%;
   height: 95%;
-  margin-block: 2%;
-  margin-inline: 2.5%;
 }
 
 .screen-children2 {
