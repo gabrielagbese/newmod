@@ -136,8 +136,8 @@ body {
         justify-content: center;
     };
     @include lg{
-      height: 49vh;
-      margin-top: 0.75vh;
+      height: 48.25vh;
+      margin-top: 1vh;
       width: 95%;
       border: thin solid green;
       flex-direction: column;  
