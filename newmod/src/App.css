@@ -341,10 +341,6 @@ body {
   }
 }
 
-.side-screen > .rounded {
-  border: thin solid transparent;
-}
-
 .screen-children {
   min-width: 95% !important;
   height: 95% !important;

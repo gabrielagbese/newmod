@@ -195,7 +195,7 @@ function App() {
 				
 				<div className="side-wrapper">
 					<div className="side-screen" ref={sideScreenRef}>
-						<div className="screen-children rounded">
+						<div className="screen-children">
 							<div className='rounded time-location'>
 								<div className='location rounded'>
 									<div className='icon-time rounded'>
