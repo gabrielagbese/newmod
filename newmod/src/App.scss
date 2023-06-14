@@ -141,7 +141,7 @@ body {
       width: 95%;
       border: thin solid green;
       flex-direction: column;  
-      justify-content: center;
+      justify-content: start;
     };
 }
 
@@ -161,7 +161,7 @@ body {
     };
     @include lg{
         width: 100%;
-        height: 35%;
+        height: 33.3%;
         color: rgb(255, 255, 255);
         margin-bottom: 0 !important;
         font-weight: 400;
@@ -178,7 +178,7 @@ body {
     };
     @include lg{
         margin-inline: 10px !important;
-        margin-top: 0px !important;
+        //margin-top: 0px !important;
     };
   }
   
@@ -202,15 +202,7 @@ body {
     };
   }
   
-  .nav-item:nth-child(4) {
-    @include xs{
-        margin-right: 5px !important;
-        margin-left: 0px !important;
-    };
-    @include lg{
-        margin-inline: 10px !important;
-    };
-  }
+
 
 .status-text{
     margin: 0;
@@ -244,7 +236,7 @@ body {
       border: 1.5px solid rgba(255, 255, 255, 0.25);
       //background: linear-gradient(180deg, rgba(20, 20, 20,0.75) 30%, rgba(20, 20, 20, 0.65)85%, rgba(22, 22, 22, 0.4) 95%);
         //box-shadow: 0 0 30px 30px rgba(155, 155, 155, 0.01);
-        background: linear-gradient(180deg, rgba(18, 18, 18, 0.75), rgba(14, 14, 14, 0.75))
+        background: linear-gradient(180deg, rgba(18, 18, 20, 0.5), rgba(14, 14, 16, 0.5))
       };
 }
 
@@ -298,11 +290,12 @@ body {
 .city{
   min-width: 96.5%;
   min-height: 33%;
-  font-size:1.25rem;
+  font-size:1.125em;
   color: rgba(225,225,225,0.6);
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .icon-time{
@@ -339,17 +332,19 @@ body {
 .time{
   min-width: 47.5%;
   min-height: 94%;
+  //aspect-ratio: 1.5/1;
   //background: linear-gradient(180deg, rgba(20, 20, 20,0.75) 30%, rgba(30, 30, 30, 0.65)85%, rgba(20, 20, 20, 0.4) 95%);
   box-shadow: inset 0 0 25px rgba(100, 100, 100, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   //border: thin solid blue;
 }
 
 .clock{
   width: 96%;
-  height: 96%;
+  aspect-ratio: 1/1.025;
   position: relative;
   border: thin solid rgba(255, 255, 255, 0.25);
   border-radius: 2.5px;
@@ -370,23 +365,24 @@ body {
 }
 .dial{
   font-weight: 500;
+  font-size: 0.75rem;
 }
 
 .clock .number1{ --rotation: 30deg;}
 .clock .number2{ --rotation: 60deg;}
 .clock .number3{ --rotation: 90deg;}
-.clock .number3 >p{  margin-top: 2.5%;font-size: 1.75rem;}
+.clock .number3 >p{  margin-top: 3.5%;font-size: 1.125rem;font-weight: 700;}
 .clock .number4{ --rotation: 120deg;}
 .clock .number5{ --rotation: 150deg;}
 .clock .number6{ --rotation: 180deg;}
-.clock .number6 >p{  margin-top: 2.5%;font-size: 1.75rem;}
+.clock .number6 >p{  margin-top: 3.5%;font-size: 1.125rem;font-weight: 700;}
 .clock .number7{ --rotation: 210deg;}
 .clock .number8{ --rotation: 240deg;}
 .clock .number9{ --rotation: 270deg;}
-.clock .number9 >p{ margin-top: 2.5%;font-size: 1.75rem;}
+.clock .number9 >p{ margin-top: 3.5%;font-size: 1.125rem;font-weight: 700;}
 .clock .number10{ --rotation: 300deg;}
 .clock .number11{ --rotation: 330deg;}
-.clock .number12 >p{ margin-top: 2.5%; font-size: 1.75rem;}
+.clock .number12 >p{ margin-top: 3.5%; font-size: 1.125rem;font-weight: 700;}
 
 .clock .hand {
   --rotation: 0;
@@ -437,7 +433,7 @@ body {
 .location-icon{
     width: 25%;
     height: 100%;
-    font-size: 2rem;
+    font-size: 2em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -451,11 +447,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     padding: 0;
     margin: 0;
     @include md{
-        font-size: 1.25rem;
+        font-size: 1.125em;
     };
 }
 
@@ -480,7 +476,7 @@ body {
 // }
 
 .clock2{
-    font-size: 2.5rem;
+    font-size: 2.5em;
     font-family: 'LCDFont', monospace;
     display: flex;
     justify-content: center;
@@ -518,17 +514,18 @@ body {
     display: flex;
     width: 100%;
     height: 40%;
-    font-size: 175%;
+    font-size: 1.75em;
     margin-top: 0.30rem;
     color: rgba(255, 255, 255, 0.65);
     font-family: 'LCDFont', monospace;
     margin-top: 1%;
     @include md{
-        font-size: 150%;
+        //font-size: 150%;
         width: 125%;
+        padding-block: 10px;
     };
     @include lg{
-        font-size: 175%;
+        //font-size: 175%;
         width: 125%;
         padding-block: 10px;
     };
@@ -777,14 +774,14 @@ body {
     width: 100%;
     border-bottom: thin solid rgba(255, 255, 255, 0.2);
     display: flex;
-    justify-content: end;
-    //align-items: center;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
     @include xs{
-      height: 25%;
+      min-height: 50%;
     };
     @include lg{
-      height: 31.5%;
+      min-height: 48.5%;
     };
   }
 
@@ -794,32 +791,34 @@ body {
   // }
 
   .hi-text{
-    padding: 1rem;
-    padding-left: 1.25rem;
+    padding: 1.75rem;
+    //padding-left: 1.25rem;
     padding-bottom: 0;
     @include xs{
       font-size: 1rem;
     };
     @include lg{
       font-size: 1.75rem;
+      margin-top: -10%
     };
   }
 
   .name-text{
-    padding: 1rem;
+    padding-left: 1rem;
     padding-top: 0;
     color: rgb(230, 230, 230);
     @include xs{
-      font-size: 3.5em;
+      font-size: 4.5em;
       font-weight: 600;
       margin-bottom: 0;
-      padding-bottom: 0;
+      padding-bottom: 1.5%;
     };
     @include md{
-      font-size: 7rem;
+      font-size: 6.5em;
     };
     @include lg{
-      font-size: 8rem;
+      //margin-top: 1em;
+      line-height: 1em;
     };
   }
 
@@ -834,18 +833,24 @@ body {
 
   .hero-text{
     color: rgb(230, 230, 230);
+    //font-weight: 300;
     @include xs{
         padding-top: 0.5rem;
         margin: 0;
-        font-size: 1.2rem;
+        font-size: 1.125rem;
         padding-inline: 1rem;
+        font-weight: 500;
     };
     @include md{
-      padding-top: 0rem;
-        font-size: 2.25rem;
+        padding-top: 0.75em;
+        font-size: 2.25em;
         padding-inline: 2rem;
         margin-block: 0rem;
         line-height: 2.25rem;
+        font-weight: 500;
+    };
+    @include lg{
+      padding-top: 0em;
     };
   }
 
@@ -857,7 +862,7 @@ body {
     
     justify-content: baseline;
     @include xs{
-      font-size: 1rem;
+      font-size: 1.125rem;
       margin-left: 1rem;
     };
     @include md{
@@ -872,15 +877,14 @@ body {
 
   .hero-bottom{
     width: 100%;
-    
-    //outline: thin solid pink;
+    //border: thin solid pink;
     align-items: center !important;
     @include xs{
       min-height: 75%;
     };
     @include lg{
       display: flex;
-      min-height: 70%;
+      min-height: 50%;
     };
   }
 
@@ -890,26 +894,28 @@ body {
     //outline: thin solid pink;
     @include xs{
       width: 100%;
-      height: 50%;
-      min-height: 50%;
+      height: 30%;
+      min-height: 30%;
       border-bottom: thin solid rgba(255, 255, 255, 0.2);
-      justify-content: space-around !important;
+      //justify-content: space-around !important;
     };
     @include lg{
-        width: 60%;
+        width: 40%;
         height: 100%;
-        min-height: 100%;
+        justify-content: center;
+        //align-items: center;
+        //min-height: 100%;
         border-right: thin solid rgba(255, 255, 255, 0.2); 
-        justify-content: space-around !important;
+        //justify-content: space-around !important;
         border-bottom: none;
     };
   }
   .hero-right{
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     //overflow: hidden;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     @include xs{
       width: 100%;
       height: 50%;
@@ -918,7 +924,7 @@ body {
     };
     @include lg{
         //position: relative;
-        width: 40%;
+        width: 60%;
         height: 100%;
         //border: thin solid blue; 
     };
@@ -929,28 +935,31 @@ body {
     box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     @include xs{
-      min-width: 95%;
-      min-height: 90%;
+      min-width: 96.5%;
+      min-height: 95%;
       border-radius: 4.5px;
-      //background-image: url(./assets/template.png);
+      background-image: url(./assets/mario.gif);
       background-size: cover;
       background-position-x: right;
-      background-position-y: 80%; 
-      filter: grayscale(0.5) sepia(0.35) brightness(0.75);
+      background-position-y: bottom; 
+      filter: grayscale(0.25) sepia(0.5) brightness(1);
       transform: scaleX(-1);
     };
     @include md{
       min-width: 97%;
       min-height: 90%;
-      border-radius: 4.5px;
-      background-position-x: 30%;
+      border-radius: 5px;
+      background-position-y: bottom;
     };
     @include lg{
-      min-width: 96%;
-      min-height: 95%;
-      border-radius: 5px;
+      min-width: 100%;
+      min-height: 100%;
+      border-radius: 0px;
+      background-size: cover;
+      background-position-y: top; 
+      background-position-x: right;
       background: rgba(255, 255, 255, 0.03);
-      //background-image: url(./assets/template-2.png);
+      background-image: url(./assets/green.gif);
       //margin-top: -0.5%;
     };
   }
@@ -977,12 +986,12 @@ body {
     //border: thin solid green;
     transform-style: preserve-3d;
     transform: translateZ(10px);
-    @include xs{
-      background-image: url(./assets/template.png);  
-    };
-    @include lg{
-      background-image: url(./assets/template-2.png);  
-    };
+    // @include xs{
+    //   background-image: url(./assets/template.png);  
+    // };
+    // @include lg{
+    //   background-image: url(./assets/template-2.png);  
+    // };
   }
 
   .layer1{
@@ -1113,17 +1122,20 @@ body {
 }
 
 
-.hero-social{
+.hero-social-wrapper{
   display: flex;
+  
   align-items: center;
-  width: 100%;
+  width: calc(100% - 1rem);
   height: 10%;
-  padding-left: 1rem;
+  margin-left: 1rem;
   @include xs{
     margin-bottom: 5%;
+    justify-content: space-between;
   };
   @include lg{
     margin-bottom: 0%;
+    justify-content: left;
   };
 }
 
@@ -1134,13 +1146,15 @@ body {
   background-color: rgba(255, 255, 255, 0.05);
   border: thin solid rgba(255, 255, 255, 0.1);
   @include xs{
-    border-radius: 4px;
+    border-radius: 5px;
     box-shadow: 0rem 10px 0.25rem 0px #00000028;
     color: white;
-    min-width: 17.5%;
+    min-width: 20%;
     font-size: 0.85rem;
     margin-top: 1rem;
-    aspect-ratio: 2.5/1;
+    //aspect-ratio: 2.5/1;
+    padding-inline: 5px;
+    padding-block: 5px;
     margin-right: 10px;
   };
   @include lg{
@@ -1148,8 +1162,9 @@ body {
     box-shadow: 0rem 10px 0.25rem 0px #00000028;
     color: white;
     min-width: 15%;
-    aspect-ratio: 2.5/1;
-    margin-inline: 10px;
+    //aspect-ratio: 2.5/1;
+    padding-inline: 10px;
+    padding-block: 5px;
     cursor: pointer;
   };
 }

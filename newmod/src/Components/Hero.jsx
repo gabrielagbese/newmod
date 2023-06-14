@@ -29,15 +29,31 @@ function Hero() {
 				<div className='hero-wrapper rounded'>
 					<div className='hero-space'></div>
 					<div className='hero-top'>
-						<div className='hi-text'>Hi, I'm</div>
-						<div className='name-text'>Gabriel <span className='surname-text'>Agbese</span></div>
+					<div className='game-space'>
+										<div className='layer-wrapper'>
+											<div className='layer0'></div>
+											{/* <div className='layer1'></div>
+											<div className='layer2'></div>
+											<div className='layer3'></div>
+											<div className='layer4'></div>  */}
+										</div>
+								<div className="scanline"></div>
+							</div>
+						
 					</div>
 					{/* <div className='hero-border'></div> */}
 					<div className='hero-bottom'>
 						<div className='hero-left'>
-							<p className='hero-text'>I'm a creative frontend developer passionate about crafting unique and interactive digital experiences.</p>
+						<div className='hi-text'>Hi, I'm</div>
+						<div className='name-text'> Gabriel <span className='surname-text'>Agbese</span></div>
+						
+							
+						</div>
+						{/* <div className='hero-border'></div> */}
+						<div className='hero-right'>
+						<p className='hero-text'>I'm a creative frontend developer passionate about crafting unique and interactive digital experiences.</p>
 							<div className='opportunity-text'>
-								<p>Available for&nbsp;</p>
+								<p>&#x2022; Available for&nbsp;</p>
 								<p><Typewriter
 									options={{
 										strings: ['freelance', 'fulltime', 'part-time', 'internship'],
@@ -48,24 +64,12 @@ function Hero() {
 								</p>
 								<p>&nbsp;positions</p>
 							</div>
-							<div className='hero-social'>
+							<div className='hero-social-wrapper'>
 								<div className='hero-social-icon'>Github</div>
 								<div className='hero-social-icon'>LinkedIn</div>
 								<div className='hero-social-icon'>Email</div>
 							</div>
-						</div>
-						{/* <div className='hero-border'></div> */}
-						<div className='hero-right'>
-							<div className='game-space'>
-										<div className='layer-wrapper'>
-											<div className='layer0'></div>
-											{/* <div className='layer1'></div>
-											<div className='layer2'></div>
-											<div className='layer3'></div>
-											<div className='layer4'></div>  */}
-										</div>
-								<div className="scanline"></div>
-							</div>
+							{/* <p>aaa</p> */}
 						</div>
 					</div>
 				</div>
