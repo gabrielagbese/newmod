@@ -83,7 +83,7 @@ body {
         width: 70%;
         height: 400%;
         flex-direction: column;
-        box-shadow: 0.5rem 0px 0.5rem 0px #00000088;
+        box-shadow: 0.1rem 0px 0rem 8px #000000cc;
         z-index: 5;
     };
 }
@@ -103,6 +103,7 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
         //border-left:thin solid white; 
     };
 }
@@ -322,6 +323,7 @@ body {
   margin-top: 0 !important;
 }
 
+
 .remote{
   min-width: 96.5%;
   min-height: 33%;
@@ -343,6 +345,10 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background: url(./assets/port-rough.png);
+  background-size: contain;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
   //border: thin solid blue;
 }
 
@@ -520,7 +526,7 @@ body {
     height: 40%;
     font-size: 1.75em;
     margin-top: 0.30rem;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.5);
     font-family: 'LCDFont', monospace;
     margin-top: 1%;
     @include md{
@@ -540,7 +546,7 @@ body {
     font-size: 1.5rem;
     height: 40%;
     margin-left: 0.25rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.45);
     font-family: 'LCDFont', monospace;
     @include md{
         font-size: 1,5rem;
@@ -624,8 +630,6 @@ body {
   .face-front{
     width: 100%;
     height: 100%;
-    //border: thin solid blue; 
-    //opacity: 0.5;
     position: absolute;
     top: 10;
     background-image: url(./assets/face-empty3.png);
@@ -635,13 +639,33 @@ body {
     //box-shadow: 0px 0px 6px rgb(0, 0, 0);
   }
 
-//   .face-front:hover{
-//     background-image: url(./assets/face-empty-smile.png);
-//   }
+  .face-aux-empty{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 10;
+    background-image: url(./assets/face-empty.png); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: cover; 
+    z-index: 5;
+  }
+
+  .face-aux-project{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 10;
+    background-image: url(./assets/face-projects.png); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: cover;
+    z-index: 5;
+  }
 
   .eye-left{
     width: 10%;
-    height: 10%;
+    height: 10%; 
     background-color: #aaaaaa;
     border-radius: 50%;
     display: flex;
@@ -799,6 +823,7 @@ body {
   // }
 
   .hi-text{
+    display: none;
     padding: 1.75rem;
     //padding-left: 1.25rem;
     padding-bottom: 0;
@@ -807,14 +832,18 @@ body {
     };
     @include lg{
       font-size: 1.75rem;
-      margin-top: -10%
+      //text-decoration: underline;
+      color: #f93e21;
+      //font-weight: 600;
+      //margin-top: -10%
     };
   }
 
   .name-text{
     padding-left: 1rem;
+    margin-top: -0.5rem;
     padding-top: 0;
-    color: rgb(230, 230, 230);
+    color: rgb(222, 222, 222);
     @include xs{
       font-size: 4.5em;
       font-weight: 600;
@@ -822,10 +851,14 @@ body {
       padding-bottom: 1.5%;
     };
     @include md{
-      font-size: 1em;
+      font-size: 5em;
     };
     @include lg{
-      //margin-top: 1em;
+      // background: -webkit-linear-gradient(#ccc, #aaa); 
+      // -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+      // -webkit-background-clip: text;
+      // -webkit-text-fill-color: transparent;
+      margin-top: 0.5rem;
       line-height: 1em;
     };
   }
@@ -837,6 +870,14 @@ body {
     @include lg{
       display: inline;
     };
+  }
+
+  .frontend-text{
+    padding: 1.25rem;
+    //padding-left: 0.5rem;
+    font-size: 1.75rem;
+    letter-spacing: -0.025em;
+    color: #bbb;
   }
 
   .hero-text{
@@ -852,14 +893,20 @@ body {
     @include md{
         padding-top: 0.75em;
         font-size: 2.25vw; 
-        padding-inline: 2rem;
+        padding-inline: 1.5rem;
         margin-block: 0rem;
         line-height: 2.25rem;
         font-weight: 500;
     };
     @include lg{
-      padding-top: 0em;
+      padding-top: 0.25rem;
     };
+  }
+
+  .green-dot{
+    color: green; 
+    font-size: 2rem;
+    line-height: 1rem;
   }
 
   .opportunity-text{
@@ -875,7 +922,7 @@ body {
     };
     @include md{
       font-size: 1.5rem;
-      margin-left: 2rem;
+      margin-left: 1.5rem;
     };
   }
 
@@ -910,22 +957,38 @@ body {
     @include lg{
         min-width: 40%;
         height: 100%;
-        justify-content: center;
-        //align-items: center;
-        //min-height: 100%;
         border: thin solid rgba(255, 255, 255, 0.2); 
         border-radius: 10px;
         margin-right: 12.5px;
-        //box-sizing: border-box;
-        //justify-content: space-around !important;
-        //border-bottom: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;;
+        background: #1e1e1ecb;
+    };
+  }
+
+  .hero-left-inner{
+    @include xs{
+        
+    };
+    @include lg{
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        border: thin solid rgba(255, 255, 255, 0.1);
+        // border: 2px solid rgba(0, 0, 0, 0.756);
+        box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.75);
+        border-radius: 5px;
+        background: linear-gradient(-45deg, rgba(5, 5, 5, 0.75) 10%, rgba(20, 20, 20, 0.75));
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     };
   }
   .hero-right{
     display: flex;
     flex-direction: column;
     //overflow: hidden;
-    justify-content: center;
+    justify-content: space-around;
     // align-items: center;
     @include xs{
       width: 100%;
@@ -944,7 +1007,7 @@ body {
 
   .game-space{
     outline: thin solid rgba(255, 255, 255,0.25);
-    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.75);
     overflow: hidden;
     @include xs{
       min-width: 96.5%;
@@ -954,7 +1017,7 @@ body {
       background-size: cover;
       background-position-x: right;
       background-position-y: bottom; 
-      filter: grayscale(0.25) sepia(0.5) brightness(0.85);
+      filter: grayscale(0.25) sepia(0.5) brightness(0.65);
       transform: scaleX(-1);
     };
     @include md{
@@ -1136,47 +1199,40 @@ body {
 
 .hero-social-wrapper{
   display: flex;
-  
+  //border: thin solid red;
   align-items: center;
-  width: calc(100% - 1rem);
+  width: 75%;
   height: 10%;
-  margin-left: 1rem;
+  margin-left: 1.5rem;
   @include xs{
     margin-bottom: 5%;
     justify-content: space-between;
   };
   @include lg{
-    margin-bottom: 0%;
-    justify-content: left;
+    margin-bottom: 1rem;
+    justify-content: start
+    // margin-left: 0rem;
+    // justify-content: space-evenly;
   };
 }
 
 .hero-social-icon{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: thin solid rgba(255, 255, 255, 0.1);
   @include xs{
-    border-radius: 5px;
-    box-shadow: 0rem 10px 0.25rem 0px #00000028;
+    border-radius: 10px;
+    //box-shadow: 0rem 10px 0.25rem 0px #00000028;
     color: white;
-    min-width: 20%;
-    font-size: 0.85rem;
+    min-width: 25%;
+    font-size: 1.375rem;
     margin-top: 1rem;
-    //aspect-ratio: 2.5/1;
-    padding-inline: 5px;
-    padding-block: 5px;
-    margin-right: 10px;
+    margin-right: 10%
   };
   @include lg{
-    border-radius: 5px;
-    box-shadow: 0rem 10px 0.25rem 0px #00000028;
-    color: white;
-    min-width: 15%;
-    //aspect-ratio: 2.5/1;
-    padding-inline: 10px;
-    padding-block: 5px;
+    border: thin solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 2.5px;
     cursor: pointer;
   };
 }

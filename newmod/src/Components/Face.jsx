@@ -1,8 +1,10 @@
 import React from 'react'
 import { useEffect } from 'react'
+import { forwardRef } from 'react'
+import { useRef } from 'react'
 import { Tilt } from 'react-tilt'
 
-function Face() {
+const Face = React.forwardRef((props, faceRef) => {
 
 
     useEffect(() => {
@@ -64,12 +66,11 @@ function Face() {
                     </div>
                 </div>
                 <div className='face-front'></div>
+                
             </div>
-            <div className='neck'>
-
-            </div>
+            <div className='face-aux-empty' ref={faceRef}></div> 
         </div>
     )
-}
+})
 
 export default Face

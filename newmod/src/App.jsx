@@ -21,6 +21,7 @@ import Watch from './Components/Watch';
 function App() {
 	const stageRef = useRef(null);
 	const sideScreenRef = useRef(null);
+	const faceRef = useRef(null)
 	const [initialX, setInitialX] = useState(0);
 	const [initialY, setInitialY] = useState(0);
 	const [isSmallViewport, setIsSmallViewport] = useState(false);
@@ -28,7 +29,7 @@ function App() {
 	const [computedWidth, setComputedWidth] = useState(0);
 	const [computedHeight, setComputedHeight] = useState(0);
 
-	const CLIENT_ID = 'ed27c4fadd0e474f9534bf0210057ee1';
+	const CLIENT_ID = 'ed27c4fadd0e474f9534bf0210057ee1'; 
 	const REDIRECT_URI = 'http://localhost:5173/';
 
 	const [currentTrack, setCurrentTrack] = useState(null);
@@ -36,6 +37,8 @@ function App() {
 	const marqueeRef = useRef(null);
 
 	const [time, setTime] = useState(new Date());
+
+	const [sideScrolled, setSideScrolled ] = useState(false)
 
 	useEffect(() => {
 		const timer = setInterval(() => {
@@ -48,6 +51,9 @@ function App() {
 	}, []);
 
 	useEffect(() => {
+		if ('scrollRestoration' in history) {
+			history.scrollRestoration = 'manual';
+		}
 		const handleViewportChange = () => {
 		  window.location.reload(); // Trigger page refresh
 		};
@@ -126,7 +132,17 @@ function App() {
 	let mm = gsap.matchMedia();
 
 	const animateScroll = (targetScrollLeft) => {
+		let scrollTween = gsap.timeline();
 		gsap.to(sideScreenRef.current, { duration: 3.12, scrollLeft: targetScrollLeft, ease: 'power3.easeInOut' });
+		if (!sideScrolled){
+			scrollTween.progress(1, false);
+			scrollTween.to(".time",{autoAlpha: 0, duration: 0.5})
+			setSideScrolled(true);
+		}else{
+			scrollTween.progress(1, false);
+			scrollTween.to(".time",{autoAlpha: 1, duration: 3, delay: 2})
+			setSideScrolled(false);
+		}
 	};
 
 	const stageHero = () => {
@@ -156,6 +172,20 @@ function App() {
 	const stageWork = () => {
 		mm.add('(min-width: 960px)', () => {
 			gsap.to(stageRef.current, { duration: 1, y: initialY - 50 + '%', ease: 'power3.easeIn' });
+			if (faceRef.current) {
+				gsap.to(faceRef.current, { 
+					opacity: 1, 
+					duration: 1,
+					onComplete: () => {
+						faceRef.classList.remove('face-aux-empty'); 
+						faceRef.classList.add('face-aux-project');  
+					  gsap.to(faceRef, {
+						opacity: 1, 
+						duration: 1, 
+					  });
+					},
+				  });
+			  }
 		});
 
 		mm.add('(max-width: 959px)', () => {
@@ -208,10 +238,12 @@ function App() {
 											</div>
 									</div>
 									
-									<div className='rounded city'>Debrecen,HU</div>									
+									<div className='rounded city'>Debrecen, HU</div>									
 									<div className='rounded remote'>(Remote)</div>
 								</div>
-								<div className='time rounded'><Watch /></div>
+								<div className='time rounded'>
+									{/* <Watch /> */}
+								</div>
 							</div>
 							<div className='gk rounded spotify-wrapper'>
 								<div className='spotify-icon'><FontAwesomeIcon icon={faSpotify} /></div>
@@ -225,7 +257,7 @@ function App() {
 							</div>
 						</div>
 						<div onClick={stageHero} className="screen-children2 rounded">
-							<Face />
+							<Face ref={faceRef}/>
 						</div>
 					</div>
 					<div className='nav-border'></div>
