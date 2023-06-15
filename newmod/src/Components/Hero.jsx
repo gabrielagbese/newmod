@@ -66,9 +66,9 @@ function Hero() {
 								<p>&nbsp;positions</p>
 							</div>
 							<div className='hero-social-wrapper'>
-								<div className='hero-social-icon'>Github</div>
+								{/* <div className='hero-social-icon'>Github</div>
 								<div className='hero-social-icon'>LinkedIn</div>
-								<div className='hero-social-icon'>Email</div>
+								<div className='hero-social-icon'>Email</div> */}
 							</div>
 							{/* <p>aaa</p> */}
 						</div>

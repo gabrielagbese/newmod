@@ -29,7 +29,7 @@ const Face = React.forwardRef((props, faceRef) => {
             const pupilX = (x / window.innerWidth) * 50;
             const pupilY = (y / window.innerHeight) * 40;
             pupils.forEach(pupil => {
-                pupil.style.transform = `translate(${pupilX - 30}%, ${pupilY}%)`;
+                pupil.style.transform = `translate(${pupilX - 50}%, ${pupilY}%)`;
             });
 
             //move neck

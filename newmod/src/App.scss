@@ -77,13 +77,13 @@ body {
     //overflow: scroll;
     @include xs {
         width: 400%;
-        height: 85%;
+        height: 83%;
     };
     @include lg {
         width: 70%;
         height: 400%;
         flex-direction: column;
-        box-shadow: 0.1rem 0px 0rem 8px #000000cc;
+        box-shadow: 0.1rem 0px 0rem 5px #000000cc;
         z-index: 5;
     };
 }
@@ -92,7 +92,7 @@ body {
     display: flex;
     @include xs{
         width: 100%;
-        height: 11%; 
+        height: 13%; 
         align-items: center;
         justify-content: center;
     };
@@ -136,6 +136,9 @@ body {
         justify-self: center;
         justify-content: center;
     };
+    @include md{
+      justify-content: space-around
+    };
     @include lg{
       height: 48vh;
       margin-top: 0.75vh;
@@ -159,6 +162,7 @@ body {
     };
     @include md{
       min-width: 31.5%;
+      font-size: 2.75rem;
     };
     @include lg{
         width: 100%;
@@ -175,8 +179,11 @@ body {
     @include xs{
         margin-right: 5px !important;
         margin-left: 5px !important;
-        //margin-top: 0px !important;
     };
+    @include md{
+      margin-right: 5px !important;
+      margin-left: 5px !important;
+  };
     @include lg{
         margin-inline: 10px !important;
         //margin-top: 0px !important;
@@ -234,7 +241,7 @@ body {
     };
     @include lg {
       border-radius: 20px;
-      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
       //background: linear-gradient(180deg, rgba(20, 20, 20,0.75) 30%, rgba(20, 20, 20, 0.65)85%, rgba(22, 22, 22, 0.4) 95%);
         //box-shadow: 0 0 30px 30px rgba(155, 155, 155, 0.01);
         background: linear-gradient(180deg, rgba(18, 18, 20, 0.5), rgba(14, 14, 16, 0.5))
@@ -614,16 +621,20 @@ body {
     width: 70%;
     height: 88%;
     z-index: 2;
+    display: flex;
+    justify-content: center;
   }
 
   
   .face-back{
-    width: 100%;
+    width: 36%;
     height: 100%;
     //border: thin solid red; 
+    //margin-left: 20%;
     position: absolute;
     display: flex; 
     align-items: center;
+    justify-content: space-between;
     top: 10;
   }
 
@@ -632,10 +643,11 @@ body {
     height: 100%;
     position: absolute;
     top: 10;
+    //opacity: 0.5;
     background-image: url(./assets/face-empty3.png);
     background-repeat: no-repeat; 
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     //box-shadow: 0px 0px 6px rgb(0, 0, 0);
   }
 
@@ -664,26 +676,28 @@ body {
   }
 
   .eye-left{
-    width: 10%;
-    height: 10%; 
+    width: 30%;
+    //height: 10%; 
+    aspect-ratio: 1/1;
     background-color: #aaaaaa;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 31%; 
+    //margin-left: 4.5vw; 
     margin-top: -2.5%; 
   }
 
   .eye-right{
-    width: 10%;
-    height: 10%;
+    width: 30%;
+    //height: 10%;
+    aspect-ratio: 1/1;
     background-color: #aaaaaa;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center; 
-    margin-left: 15.25%;
+    //margin-left: 4vw;
     margin-top: -2.5%;  
   }
 
@@ -809,9 +823,10 @@ body {
     align-items: center;
    
     @include xs{
-      min-height: 50%;
+      min-height: 40%;
+      margin-bottom: 10px;
     };
-    @include lg{
+    @include md{
       min-height: 47.5%;
       margin-bottom: 15px;
     };
@@ -840,24 +855,23 @@ body {
   }
 
   .name-text{
-    padding-left: 1rem;
-    margin-top: -0.5rem;
-    padding-top: 0;
     color: rgb(222, 222, 222);
     @include xs{
-      font-size: 4.5em;
+      padding-left: 0.5rem;
+      font-size: 3.5em;
       font-weight: 600;
+      padding-top: 0;
+    };
+    @include md{
+      padding-left: 1rem;
+      font-size: 4.5rem;
+      padding-top: 1rem;
       margin-bottom: 0;
       padding-bottom: 1.5%;
     };
-    @include md{
-      font-size: 5em;
-    };
     @include lg{
-      // background: -webkit-linear-gradient(#ccc, #aaa); 
-      // -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
-      // -webkit-background-clip: text;
-      // -webkit-text-fill-color: transparent;
+      padding-top: 0.5rem;
+      font-size: clamp(4rem, 60%, 6rem);
       margin-top: 0.5rem;
       line-height: 1em;
     };
@@ -867,17 +881,26 @@ body {
     @include xs{
       display: none;
     };
-    @include lg{
+    @include md{
       display: inline;
     };
   }
 
   .frontend-text{
-    padding: 1.25rem;
-    //padding-left: 0.5rem;
-    font-size: 1.75rem;
-    letter-spacing: -0.025em;
-    color: #bbb;
+    @include xs{
+      padding-left: 0.75rem;
+      padding-bottom: 0.5rem;
+      font-size: 1.25rem;
+      letter-spacing: -0.025em;
+      color: #bbb;
+    };
+    @include md{
+      padding: 1.25rem;
+      //padding-left: 0.5rem;
+      font-size: 1.75rem;
+      letter-spacing: -0.025em;
+      color: #bbb;
+    };
   }
 
   .hero-text{
@@ -886,27 +909,43 @@ body {
     @include xs{
         padding-top: 0.5rem;
         margin: 0;
-        font-size: 1.125rem;
-        padding-inline: 1rem;
+        font-size: 1.175rem;
+        padding-inline: 0.75rem;
         font-weight: 500;
     };
     @include md{
-        padding-top: 0.75em;
-        font-size: 2.25vw; 
-        padding-inline: 1.5rem;
+        padding-top: 1.125em;
+        font-size: 4vw; 
+        padding-inline: 2rem;
         margin-block: 0rem;
         line-height: 2.25rem;
         font-weight: 500;
     };
     @include lg{
       padding-top: 0.25rem;
+      font-size: 2.25vw; 
+        padding-inline: 1.5rem;
+        margin-block: 0rem;
+        line-height: 2.25rem;
+        font-weight: 500;
     };
   }
 
   .green-dot{
     color: green; 
-    font-size: 2rem;
-    line-height: 1rem;
+    @include xs{
+      font-size: 1rem;
+      line-height: 1rem;
+    };
+    @include md{
+      font-size: 2rem;
+      line-height: 0rem;
+      margin-left: 1rem;
+    };
+    @include lg{
+      font-size: 2rem;
+      line-height: 1rem;
+    };
   }
 
   .opportunity-text{
@@ -917,10 +956,14 @@ body {
     
     justify-content: baseline;
     @include xs{
-      font-size: 1.125rem;
+      font-size: 1rem;
       margin-left: 1rem;
     };
     @include md{
+      font-size: 1.25rem;
+      margin-left: 1.5rem;
+    };
+    @include lg{
       font-size: 1.5rem;
       margin-left: 1.5rem;
     };
@@ -932,12 +975,13 @@ body {
 
   .hero-bottom{
     width: 100%;
-    //border: thin solid pink;
+    //border: thin solid yellow;
     align-items: center !important;
     @include xs{
       min-height: 75%;
     };
-    @include lg{
+    @include md{
+      width: 100%;
       display: flex;
       min-height: calc(53% - 20px);
     };
@@ -951,82 +995,91 @@ body {
       width: 100%;
       height: 30%;
       min-height: 30%;
-      border-bottom: thin solid rgba(255, 255, 255, 0.2);
-      //justify-content: space-around !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #1e1e1e7b;
+        margin-bottom: 10px;
     };
-    @include lg{
+    @include md{
+        border-radius: 10px;
         min-width: 40%;
         height: 100%;
-        border: thin solid rgba(255, 255, 255, 0.2); 
-        border-radius: 10px;
+        margin-bottom: 0;
         margin-right: 12.5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;;
-        background: #1e1e1ecb;
+        
     };
   }
 
   .hero-left-inner{
     @include xs{
-        
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+      border: thin solid rgba(255, 255, 255, 0.2);
+      box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.75);
+      border-radius: 5px;
+      background: linear-gradient(-45deg, rgba(5, 5, 5, 0.75) 10%, rgba(35, 35, 35, 0.75));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     };
-    @include lg{
-        width: calc(100% - 10px);
-        height: calc(100% - 10px);
-        border: thin solid rgba(255, 255, 255, 0.1);
+    @include md{
+      background: linear-gradient(-45deg, rgba(5, 5, 5, 0.75) 10%, rgba(40, 40, 40, 0.75));
         // border: 2px solid rgba(0, 0, 0, 0.756);
-        box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.75);
-        border-radius: 5px;
-        background: linear-gradient(-45deg, rgba(5, 5, 5, 0.75) 10%, rgba(20, 20, 20, 0.75));
+       
+    };
+  }
+  .hero-right{
+    
+    // align-items: center;
+    @include xs{
+      width: 99.5%;
+      height: calc(45% - 5px);
+      min-height: calc(45% - 5px);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      //outline: thin solid green;
+    };
+    @include md{
+        min-width: calc(60% - 20px);;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     };
-  }
-  .hero-right{
-    display: flex;
-    flex-direction: column;
-    //overflow: hidden;
-    justify-content: space-around;
-    // align-items: center;
-    @include xs{
-      width: 100%;
-      height: 50%;
-      min-height: 50%;
-      //outline: thin solid green;
-    };
     @include lg{
-        //position: relative;
-        min-width: calc(60% - 20px);;
-        height: 100%;
-        border: thin solid rgba(255, 255, 255, 0.2); 
-        border-radius: 10px;
-    };
+      min-width: calc(60% - 20px);;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+  };
   }
 
   .game-space{
-    outline: thin solid rgba(255, 255, 255,0.25);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.75);
     overflow: hidden;
     @include xs{
-      min-width: 96.5%;
-      min-height: 95%;
-      border-radius: 4.5px;
+      min-width: 100%;
+      min-height: 100%;
+      border-radius: 10px;
       background-image: url(./assets/mario.gif);
       background-size: cover;
       background-position-x: right;
       background-position-y: bottom; 
-      filter: grayscale(0.25) sepia(0.5) brightness(0.65);
+      filter: grayscale(0.25) sepia(0.15) brightness(1);
       transform: scaleX(-1);
     };
+    // @include md{
+    //   min-width: 97%;
+    //   min-height: 90%;
+    //   border-radius: 5px;
+    //   background-position-y: bottom;
+    // };
     @include md{
-      min-width: 97%;
-      min-height: 90%;
-      border-radius: 5px;
-      background-position-y: bottom;
-    };
-    @include lg{
       min-width: calc(100%);
       min-height: 100%;
       border-radius: 10px;
@@ -1203,21 +1256,33 @@ body {
   align-items: center;
   width: 75%;
   height: 10%;
-  margin-left: 1.5rem;
   @include xs{
     margin-bottom: 5%;
     justify-content: space-between;
+    margin-left: 1.5rem;
+  };
+  @include md{
+    margin-bottom: 1.75rem;
+    justify-content: start;
+    margin-left: 2rem;
   };
   @include lg{
     margin-bottom: 1rem;
     justify-content: start
-    // margin-left: 0rem;
-    // justify-content: space-evenly;
   };
 }
 
 .hero-social-icon{
   @include xs{
+    border-radius: 10px;
+    //box-shadow: 0rem 10px 0.25rem 0px #00000028;
+    color: white;
+    min-width: 25%;
+    font-size: 1.375rem;
+    margin-top: 1rem;
+    margin-right: 10%
+  };
+  @include md{
     border-radius: 10px;
     //box-shadow: 0rem 10px 0.25rem 0px #00000028;
     color: white;
